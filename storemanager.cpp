@@ -46,7 +46,7 @@ StoreManager::~StoreManager()
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/luisr/OneDrive/Desktop/Sqlite/Database/Inventory.db");
+    db.setDatabaseName("");
 
     if(!db.open())
     {

@@ -5,6 +5,7 @@
 #include <sqlite3.h>
 #include <string>
 #include <vector>
+#include "sqlite3.c"
 #include "picosha2.h"
 
 class sqlConnection {

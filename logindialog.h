@@ -14,6 +14,7 @@
 #include <QDebug>
 #include "ui_loginwindow.h"
 #include "storemanager.h"
+#include "admin.h"
 
 
 
@@ -36,6 +37,7 @@ private:
     void setUpGUI();
 
     StoreManager* StoreManagerWindow = NULL;
+    Admin* adminWindow = NULL;
 
 public:
     explicit LoginDialog(QWidget* parent = nullptr);

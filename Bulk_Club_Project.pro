@@ -11,18 +11,21 @@ INCLUDEPATH += "C:\Users\zacal\CS1C\BulkClub-System"
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    admin.cpp \
     logindialog.cpp \
     main.cpp \
     salesreport.cpp \
     storemanager.cpp
 
 HEADERS += \
+    admin.h \
     logindialog.h \
     picosha2.h \
     salesreport.h \
     storemanager.h
 
 FORMS += \
+    admin.ui \
     salesreport.ui \
     storemanager.ui
 

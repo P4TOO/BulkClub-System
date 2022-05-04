@@ -74,7 +74,7 @@ void LoginDialog::setPassword(QString &password){
 void LoginDialog::slotAcceptLogin(){
     QString notFound = "Profile not found, check login information";
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:\\Users\\zacal\\CS1C\\BulkClub-System\\users.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:\\Users\\zacal\\CS1C\\BulkClub-System\\BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString username = editUsername->text(); //pulls the values from the text edit lines
@@ -100,14 +100,25 @@ void LoginDialog::slotAcceptLogin(){
     std::string saltedHashStr = picosha2::bytes_to_hex_string(hash.begin(),hash.end());
     QString saltedHash = saltedHash.fromStdString(saltedHashStr);
 
+    bool admin = record.value(2).toBool();
+
     if (QString::compare(hashToComp,saltedHash,Qt::CaseSensitive) == 0){
         qDebug().noquote() << "correct login";
-        StoreManagerWindow = new StoreManager;
-        StoreManagerWindow->show();
+
+        if(admin){
+            qDebug().noquote() << "Logging in as admin";
+            adminWindow = new Admin;
+            adminWindow->show();
+        }
+        else{
+            qDebug().noquote() << "Logging in as a user";
+            StoreManagerWindow = new StoreManager;
+            StoreManagerWindow->show();
+        }
+
         this->close();
     }
     else{
         qDebug().noquote() << notFound;
     }
-    query.clear();
 }

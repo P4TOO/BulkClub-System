@@ -12,7 +12,6 @@
 #include <QGridLayout>
 #include <QStringList>
 #include <QDebug>
-#include "ui_loginwindow.h"
 #include "storemanager.h"
 #include "admin.h"
 

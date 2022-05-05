@@ -6,57 +6,253 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>584</width>
+    <height>408</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="checkDatabaseConnection">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>220</x>
       <y>20</y>
-      <width>49</width>
-      <height>16</height>
+      <width>131</width>
+      <height>24</height>
      </rect>
     </property>
     <property name="text">
      <string>Database Connection</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="member_rebates">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>180</x>
+      <y>270</y>
+      <width>116</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 238, 89)</string>
+    </property>
+    <property name="text">
+     <string>Member Rebates</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="member_purchases">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>300</y>
+      <width>181</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(0, 139, 0)</string>
+    </property>
+    <property name="text">
+     <string>Member Purchases</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="membership_expiry_search">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>180</y>
+      <width>181</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(105, 146, 255)</string>
+    </property>
+    <property name="text">
+     <string>Membership Expiry</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="item_search">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>240</y>
+      <width>181</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
+    </property>
+    <property name="text">
+     <string>Item Search</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="item_inventory">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>180</y>
+      <width>116</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(0, 139, 0)</string>
+    </property>
+    <property name="text">
+     <string>Item Inventory</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sales_report">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>180</y>
+      <width>116</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(105, 146, 255)</string>
+    </property>
+    <property name="text">
+     <string>Sales Report</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="total_purchases">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>270</y>
+      <width>116</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
+    </property>
+    <property name="text">
+     <string>Total Purchases</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
       <y>110</y>
-      <width>75</width>
+      <width>281</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI Semilight</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Welcome Store Manager</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>20</y>
+      <width>131</width>
       <height>24</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
+    </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Exit</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuDisplay">
-    <property name="title">
-     <string>Display</string>
+   <widget class="QGraphicsView" name="graphicsView_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>671</width>
+      <height>71</height>
+     </rect>
     </property>
-    <addaction name="actionSales_Report"/>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 238, 89)</string>
+    </property>
    </widget>
-   <addaction name="menuDisplay"/>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>0</y>
+      <width>51</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../Misc 2/Downloads/output-onlinepngtools.png</pixmap>
+    </property>
+   </widget>
+   <zorder>member_rebates</zorder>
+   <zorder>member_purchases</zorder>
+   <zorder>membership_expiry_search</zorder>
+   <zorder>item_search</zorder>
+   <zorder>item_inventory</zorder>
+   <zorder>sales_report</zorder>
+   <zorder>total_purchases</zorder>
+   <zorder>label</zorder>
+   <zorder>graphicsView_2</zorder>
+   <zorder>checkDatabaseConnection</zorder>
+   <zorder>exitButton</zorder>
+   <zorder>label_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSales_Report">
@@ -64,7 +260,44 @@
     <string>Sales Report</string>
    </property>
   </action>
+  <action name="actionTotal_Purchases">
+   <property name="text">
+    <string>Total Purchases</string>
+   </property>
+  </action>
+  <action name="actionItem_Quantity">
+   <property name="text">
+    <string>Item Quantity</string>
+   </property>
+  </action>
+  <action name="actionMember_Rebate">
+   <property name="text">
+    <string>Member Rebate</string>
+   </property>
+  </action>
+  <action name="actionMembership_Tracker">
+   <property name="text">
+    <string>Membership Tracker</string>
+   </property>
+  </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>exitButton</sender>
+   <signal>clicked()</signal>
+   <receiver>StoreManager</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>458</x>
+     <y>128</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

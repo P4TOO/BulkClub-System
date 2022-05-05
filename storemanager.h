@@ -23,6 +23,8 @@ private slots:
 
     void on_actionSales_Report_triggered();
 
+    void on_sales_report_clicked();
+
 private:
     Ui::StoreManager *ui;
     SalesReport* SalesReportWindow = NULL;

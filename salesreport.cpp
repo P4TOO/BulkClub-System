@@ -16,7 +16,7 @@ SalesReport::SalesReport(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v1/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("/Users/adriangomez/desktop/Bulk Project/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model = new QSqlQueryModel();

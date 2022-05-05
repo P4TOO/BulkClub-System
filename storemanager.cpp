@@ -46,7 +46,7 @@ StoreManager::~StoreManager()
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("");
+    db.setDatabaseName("/Users/adriangomez/desktop/Bulk Project/BulkClub-System/BulkClubProject.db");
 
     if(!db.open())
     {
@@ -62,6 +62,12 @@ void  StoreManager::on_pushButton_clicked()
 }
 
 void StoreManager::on_actionSales_Report_triggered()
+{
+
+}
+
+
+void StoreManager::on_sales_report_clicked()
 {
     SalesReportWindow = new SalesReport;
     SalesReportWindow->show();

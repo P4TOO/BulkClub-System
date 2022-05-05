@@ -1,24 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>Admin</class>
  <widget class="QMainWindow" name="Admin">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>721</width>
+    <height>384</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Algerian</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Welcome Admin!</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>721</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionSave"/>
+   </widget>
+   <widget class="QMenu" name="menuSales">
+    <property name="title">
+     <string>Sales</string>
+    </property>
+    <addaction name="actionSales_Report"/>
+    <addaction name="actionPurchases_Chart"/>
+    <addaction name="actionMember_Purchases"/>
+   </widget>
+   <widget class="QMenu" name="menuInventory">
+    <property name="title">
+     <string>Inventory</string>
+    </property>
+    <addaction name="actionManage_Inventory"/>
+    <addaction name="actionItem_List"/>
+    <addaction name="actionItem_Search"/>
+   </widget>
+   <widget class="QMenu" name="menuMembers">
+    <property name="title">
+     <string>Members</string>
+    </property>
+    <addaction name="actionManage_Members"/>
+    <addaction name="actionMember_Search"/>
+    <addaction name="actionUpgrade_Downgrade_List"/>
+   </widget>
+   <addaction name="menuSettings"/>
+   <addaction name="menuSales"/>
+   <addaction name="menuInventory"/>
+   <addaction name="menuMembers"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSales_Report">
+   <property name="text">
+    <string>Sales Report</string>
+   </property>
+  </action>
+  <action name="actionPurchases_Char">
+   <property name="text">
+    <string>Purchases Char</string>
+   </property>
+  </action>
+  <action name="actionPurchases_Chart">
+   <property name="text">
+    <string>Purchases Chart</string>
+   </property>
+  </action>
+  <action name="actionMember_Purchases">
+   <property name="text">
+    <string>Member Purchases</string>
+   </property>
+  </action>
+  <action name="actionManage_Inventory">
+   <property name="text">
+    <string>Manage Inventory</string>
+   </property>
+  </action>
+  <action name="actionItem_List">
+   <property name="text">
+    <string>Inventory List</string>
+   </property>
+  </action>
+  <action name="actionItem_Search">
+   <property name="text">
+    <string>Item Search</string>
+   </property>
+  </action>
+  <action name="actionManage_Members">
+   <property name="text">
+    <string>Manage Members</string>
+   </property>
+  </action>
+  <action name="actionMember_Search">
+   <property name="text">
+    <string>Member Search</string>
+   </property>
+  </action>
+  <action name="actionUpgrade_Downgrade_List">
+   <property name="text">
+    <string>Upgrade/Downgrade List</string>
+   </property>
+  </action>
  </widget>
- <pixmapfunction/>
+ <resources/>
  <connections/>
 </ui>

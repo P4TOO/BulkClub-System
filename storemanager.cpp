@@ -15,38 +15,11 @@ StoreManager::~StoreManager()
     delete ui;
 }
 
-/*void StoreManager::on_pushButton_clicked()
-{
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");                          //Connecting to MySQL Database
-
-    db.setHostName("127.0.0.1");
-    db.setDatabaseName("qt5");
-    db.setPort(3306);
-    db.setUserName("root");
-    db.setPassword("");
-
-    if (db.open())
-    {
-        QMessageBox::information(this, "Connected", "Database connected successfully");
-
-
-
-    }
-    else
-    {
-        QMessageBox::information(this, "Not Connected", "Database is not connected");
-
-
-    }
-
-
-}*/
-
 
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/Users/adriangomez/desktop/Bulk Project/BulkClub-System/BulkClubProject.db");
+    db.setDatabaseName("C:\\Users\\zacal\\CS1C\\BulkClub-System\\BulkClubProject.db");
 
     if(!db.open())
     {

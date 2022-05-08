@@ -19,7 +19,7 @@ StoreManager::~StoreManager()
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:\\Users\\zacal\\CS1C\\BulkClub-System\\BulkClubProject.db");
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");
 
     if(!db.open())
     {

@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include "salesreport.h"
+#include "membershipexpiry.h"
 
 namespace Ui {
 class StoreManager;
@@ -25,10 +26,12 @@ private slots:
 
     void on_sales_report_clicked();
 
+    void on_membership_expiry_search_clicked();
+
 private:
     Ui::StoreManager *ui;
     SalesReport* SalesReportWindow = NULL;
-
+    MembershipExpiry* expiryWindow = NULL;
 };
 
 #endif // STOREMANAGER_H

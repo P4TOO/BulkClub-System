@@ -14,18 +14,21 @@ SOURCES += \
     admin.cpp \
     logindialog.cpp \
     main.cpp \
+    membershipexpiry.cpp \
     salesreport.cpp \
     storemanager.cpp
 
 HEADERS += \
     admin.h \
     logindialog.h \
+    membershipexpiry.h \
     picosha2.h \
     salesreport.h \
     storemanager.h
 
 FORMS += \
     admin.ui \
+    membershipexpiry.ui \
     salesreport.ui \
     storemanager.ui
 

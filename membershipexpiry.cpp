@@ -15,7 +15,7 @@ MembershipExpiry::MembershipExpiry(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("C:\\Users\\zacal\\CS1C\\BulkClub-System\\BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
-    db.open();                                                                  //the .db file should be kept within the repository for now
+    db.open();                                                                  //the .db file should be kept within the repository for no
 
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery query(db);

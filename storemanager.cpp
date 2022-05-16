@@ -46,3 +46,10 @@ void StoreManager::on_sales_report_clicked()
     SalesReportWindow->show();
 }
 
+
+void StoreManager::on_membership_expiry_search_clicked()
+{
+    expiryWindow = new MembershipExpiry;
+    expiryWindow->show();
+}
+

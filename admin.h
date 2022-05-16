@@ -5,7 +5,7 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include "salesreport.h"
-
+#include "managemembers.h"
 namespace Ui {
 class Admin;
 }
@@ -23,13 +23,16 @@ private slots:
 
     void on_actionSales_Report_triggered();
 
+    void on_actionManage_Members_triggered();
+
 private:
     Ui::Admin *ui;
     SalesReport* SalesReportWindow = NULL;
-    //PurchasesChart* PurchasesChartWindow = NULL;
-    //ItemChart* ItemChartWindow = NULL;
-    //ExecutiveRebate* ExecutiveRebateWindow = NULL;
-    //
+    managemembers* ManageMembersWindow = NULL;
+    PurchasesChart* PurchasesChartWindow = NULL;
+    ItemChart* ItemChartWindow = NULL;
+    ExecutiveRebate* ExecutiveRebateWindow = NULL;
+
 };
 
 #endif // ADMIN_H

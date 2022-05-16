@@ -178,6 +178,19 @@
      <string>Manage Members</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="MemberPurchasesPushButton">
+    <property name="geometry">
+     <rect>
+      <x>414</x>
+      <y>90</y>
+      <width>131</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Member Purchases</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "salesreport.h"
 #include "managemembers.h"
-
+#include "memberpurchases.h"
 Admin::Admin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Admin)
@@ -50,5 +50,12 @@ void Admin::on_exitButton_clicked()
 {
     this->close();
 
+}
+
+
+void Admin::on_MemberPurchasesPushButton_clicked()
+{
+    MemberPurchasesWindow = new memberPurchases;
+    MemberPurchasesWindow->show();
 }
 

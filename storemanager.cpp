@@ -53,3 +53,10 @@ void StoreManager::on_membership_expiry_search_clicked()
     expiryWindow->show();
 }
 
+
+void StoreManager::on_member_purchases_clicked()
+{
+    purchasesWindow = new memberPurchases;
+    purchasesWindow->show();
+}
+

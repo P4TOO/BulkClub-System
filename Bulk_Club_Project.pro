@@ -15,6 +15,7 @@ SOURCES += \
     admin.cpp \
     logindialog.cpp \
     main.cpp \
+    memberpurchases.cpp \
     membershipexpiry.cpp \
     managemembers.cpp \
     salesreport.cpp \
@@ -24,6 +25,7 @@ HEADERS += \
     addmember.h \
     admin.h \
     logindialog.h \
+    memberpurchases.h \
     membershipexpiry.h \
     managemembers.h \
     picosha2.h \
@@ -33,6 +35,7 @@ HEADERS += \
 FORMS += \
     addmember.ui \
     admin.ui \
+    memberpurchases.ui \
     membershipexpiry.ui \
     managemembers.ui \
     salesreport.ui \

@@ -6,6 +6,7 @@
 #include <QSqlDatabase>
 #include "salesreport.h"
 #include "membershipexpiry.h"
+#include "memberpurchases.h"
 
 namespace Ui {
 class StoreManager;
@@ -28,10 +29,14 @@ private slots:
 
     void on_membership_expiry_search_clicked();
 
+    void on_member_purchases_clicked();
+
 private:
     Ui::StoreManager *ui;
     SalesReport* SalesReportWindow = NULL;
     MembershipExpiry* expiryWindow = NULL;
+    memberPurchases* purchasesWindow = NULL;
+
 };
 
 #endif // STOREMANAGER_H

@@ -23,7 +23,11 @@ private slots:
 
     void on_actionSales_Report_triggered();
 
-    void on_actionManage_Members_triggered();
+    //void on_actionManage_Members_triggered();
+
+    void on_manageMembersPushButton_clicked();
+
+    void on_exitButton_clicked();
 
 private:
     Ui::Admin *ui;

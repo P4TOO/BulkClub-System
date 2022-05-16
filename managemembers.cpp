@@ -14,7 +14,7 @@ managemembers::managemembers(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -38,7 +38,7 @@ void managemembers::on_searchPushButton_clicked()
     QString input = ui->searchLineEdit->text();
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -57,7 +57,7 @@ void managemembers::on_searchPushButton_clicked()
 void managemembers::on_DisplayAllPushButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -87,7 +87,7 @@ void managemembers::on_deletePushButton_clicked()
    if( QMessageBox::question(this, "Remove Member", "Are you sure you want to delete this member?"))
    {
        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-       db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+       db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
        db.open();                                                                  //the .db file should be kept within the repository for now
 
 

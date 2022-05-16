@@ -29,9 +29,9 @@ private:
     Ui::Admin *ui;
     SalesReport* SalesReportWindow = NULL;
     managemembers* ManageMembersWindow = NULL;
-    PurchasesChart* PurchasesChartWindow = NULL;
-    ItemChart* ItemChartWindow = NULL;
-    ExecutiveRebate* ExecutiveRebateWindow = NULL;
+    //PurchasesChart* PurchasesChartWindow = NULL;
+    //ItemChart* ItemChartWindow = NULL;
+   // ExecutiveRebate* ExecutiveRebateWindow = NULL;
 
 };
 

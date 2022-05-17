@@ -6,6 +6,8 @@
 #include <QSqlDatabase>
 #include "salesreport.h"
 #include "managemembers.h"
+
+
 namespace Ui {
 class Admin;
 }
@@ -23,15 +25,15 @@ private slots:
 
     void on_actionSales_Report_triggered();
 
-    void on_actionManage_Members_triggered();
+    void on_manageMembersPushButton_clicked();
+
+    void on_exitButton_clicked();
+
 
 private:
     Ui::Admin *ui;
     SalesReport* SalesReportWindow = NULL;
     managemembers* ManageMembersWindow = NULL;
-    //PurchasesChart* PurchasesChartWindow = NULL;
-    //ItemChart* ItemChartWindow = NULL;
-   // ExecutiveRebate* ExecutiveRebateWindow = NULL;
 
 };
 

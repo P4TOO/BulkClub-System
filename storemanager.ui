@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="checkDatabaseConnection">
     <property name="geometry">
@@ -188,7 +191,6 @@
     </property>
     <property name="font">
      <font>
-      <family>Segoe UI Semilight</family>
       <pointsize>18</pointsize>
      </font>
     </property>

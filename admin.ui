@@ -59,69 +59,6 @@
      <pixmap>../Misc 2/Downloads/output-onlinepngtools.png</pixmap>
     </property>
    </widget>
-   <widget class="QPushButton" name="changeItemPrice">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>230</y>
-      <width>181</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(255, 238, 89)</string>
-    </property>
-    <property name="text">
-     <string>Change Item Price</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="deleteItem">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>290</y>
-      <width>181</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(105, 146, 255)</string>
-    </property>
-    <property name="text">
-     <string>Delete Item</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="deleteMembers">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>260</y>
-      <width>116</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(241, 115, 0)</string>
-    </property>
-    <property name="text">
-     <string>Delete Members</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -141,58 +78,13 @@
      <string>Welcome Administrator</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="addItem">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>170</y>
-      <width>181</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(0, 139, 0)</string>
-    </property>
-    <property name="text">
-     <string>Add Item</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="addMembers">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>170</y>
-      <width>116</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(105, 146, 255)</string>
-    </property>
-    <property name="text">
-     <string>Add Members</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="membershipConversions">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>400</x>
       <y>170</y>
-      <width>151</width>
-      <height>171</height>
+      <width>161</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
@@ -207,6 +99,35 @@
      <string>Membership Conversions</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="manageMembersPushButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>170</y>
+      <width>131</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Manage Members</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ManageInventoryPushbutton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>141</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Manage Inventory</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -214,7 +135,7 @@
      <x>0</x>
      <y>0</y>
      <width>584</width>
-     <height>17</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">
@@ -223,34 +144,7 @@
     </property>
     <addaction name="actionSave"/>
    </widget>
-   <widget class="QMenu" name="menuSales">
-    <property name="title">
-     <string>Sales</string>
-    </property>
-    <addaction name="actionSales_Report"/>
-    <addaction name="actionPurchases_Chart"/>
-    <addaction name="actionMember_Purchases"/>
-   </widget>
-   <widget class="QMenu" name="menuInventory">
-    <property name="title">
-     <string>Inventory</string>
-    </property>
-    <addaction name="actionManage_Inventory"/>
-    <addaction name="actionItem_List"/>
-    <addaction name="actionItem_Search"/>
-   </widget>
-   <widget class="QMenu" name="menuMembers">
-    <property name="title">
-     <string>Members</string>
-    </property>
-    <addaction name="actionManage_Members"/>
-    <addaction name="actionMember_Search"/>
-    <addaction name="actionUpgrade_Downgrade_List"/>
-   </widget>
    <addaction name="menuSettings"/>
-   <addaction name="menuSales"/>
-   <addaction name="menuInventory"/>
-   <addaction name="menuMembers"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave">

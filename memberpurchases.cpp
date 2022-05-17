@@ -27,6 +27,8 @@ memberPurchases::memberPurchases(QWidget *parent) :
     query.exec(); //query must be active before being moved into the model
 
     model0->setQuery(std::move(query));
+
+    ui->tableView->setModel(model0);
 }
 
 memberPurchases::~memberPurchases()

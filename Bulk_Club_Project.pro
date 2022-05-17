@@ -43,11 +43,8 @@ HEADERS += \
 FORMS += \
     addmember.ui \
     admin.ui \
-<<<<<<< HEAD
     manageinventory.ui \
-=======
     itemdisplay.ui \
->>>>>>> a48879b9c033f01e86ea324fa9739fcb33c354c8
     memberpurchases.ui \
     membershipexpiry.ui \
     managemembers.ui \

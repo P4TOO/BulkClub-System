@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>583</width>
-    <height>696</height>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>12</x>
      <y>13</y>
      <width>561</width>
-     <height>561</height>
+     <height>381</height>
     </rect>
    </property>
   </widget>
@@ -27,7 +27,7 @@
    <property name="geometry">
     <rect>
      <x>150</x>
-     <y>580</y>
+     <y>410</y>
      <width>271</width>
      <height>111</height>
     </rect>
@@ -56,6 +56,9 @@
          <font>
           <pointsize>12</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(241, 115, 0)</string>
         </property>
         <property name="text">
          <string>Search</string>
@@ -87,6 +90,9 @@
          <font>
           <pointsize>12</pointsize>
          </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(105, 146, 255)</string>
         </property>
         <property name="text">
          <string>Search</string>
@@ -121,6 +127,9 @@
        <font>
         <pointsize>12</pointsize>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Cancel</string>

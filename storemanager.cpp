@@ -60,3 +60,10 @@ void StoreManager::on_member_purchases_clicked()
     purchasesWindow->show();
 }
 
+
+void StoreManager::on_member_rebates_clicked()
+{
+    rebateDisplay = new rebateWindow;
+    rebateDisplay->show();
+}
+

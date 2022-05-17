@@ -45,11 +45,13 @@ void Admin::on_manageMembersPushButton_clicked()
     ManageMembersWindow->show();
 }
 
+/*
 void Admin::on_memberUpgrade_clicked()
 {
     MemberUpgradeWindow = new memberupgrade;
     MemberUpgradeWindow->show();
 }
+ */
 
 
 void Admin::on_exitButton_clicked()

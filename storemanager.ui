@@ -33,15 +33,15 @@
    <widget class="QPushButton" name="member_rebates">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>270</y>
-      <width>116</width>
-      <height>81</height>
+      <x>300</x>
+      <y>240</y>
+      <width>181</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -54,7 +54,7 @@
    <widget class="QPushButton" name="member_purchases">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>300</x>
       <y>300</y>
       <width>181</width>
       <height>48</height>
@@ -75,7 +75,7 @@
    <widget class="QPushButton" name="membership_expiry_search">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>300</x>
       <y>180</y>
       <width>181</width>
       <height>48</height>
@@ -93,11 +93,11 @@
      <string>Membership Expiry</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="item_search">
+   <widget class="QPushButton" name="item_inventory">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>240</y>
+      <x>100</x>
+      <y>300</y>
       <width>181</width>
       <height>48</height>
      </rect>
@@ -108,28 +108,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(241, 115, 0)</string>
-    </property>
-    <property name="text">
-     <string>Item Search</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="item_inventory">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>180</y>
-      <width>116</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color:rgb(0, 139, 0)</string>
+     <string notr="true">background-color:rgb(255, 238, 89)</string>
     </property>
     <property name="text">
      <string>Item Inventory</string>
@@ -138,10 +117,10 @@
    <widget class="QPushButton" name="sales_report">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>100</x>
       <y>180</y>
-      <width>116</width>
-      <height>81</height>
+      <width>181</width>
+      <height>48</height>
      </rect>
     </property>
     <property name="font">
@@ -153,7 +132,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(105, 146, 255)</string>
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
     </property>
     <property name="text">
      <string>Sales Report</string>
@@ -162,10 +141,10 @@
    <widget class="QPushButton" name="total_purchases">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>270</y>
-      <width>116</width>
-      <height>81</height>
+      <x>100</x>
+      <y>240</y>
+      <width>181</width>
+      <height>48</height>
      </rect>
     </property>
     <property name="font">
@@ -174,7 +153,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(241, 115, 0)</string>
+     <string notr="true">background-color: rgb(105, 146, 255)</string>
     </property>
     <property name="text">
      <string>Total Purchases</string>
@@ -246,7 +225,6 @@
    <zorder>member_rebates</zorder>
    <zorder>member_purchases</zorder>
    <zorder>membership_expiry_search</zorder>
-   <zorder>item_search</zorder>
    <zorder>item_inventory</zorder>
    <zorder>sales_report</zorder>
    <zorder>total_purchases</zorder>

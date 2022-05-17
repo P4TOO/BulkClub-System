@@ -3,7 +3,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-#include <QSqlQueryModel>
+#include <QSqlTableModel>
 #include <QTableView>
 #include <QSqlRecord>
 
@@ -14,15 +14,16 @@ rebateWindow::rebateWindow(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/mitch/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QSqlQuery query(db);
-    query.prepare("SELECT * FROM Members WHERE Membership_Type='Executive'");
-    query.exec();
-
-    model->setQuery(std::move(query));
+    QSqlTableModel * model = new QSqlTableModel();
+    model->setTable("Members");
+    model->select();
+    model->setFilter("Membership_Type='Executive'");
+    model->setSort(1,Qt::AscendingOrder);
+    model->select();
 
     ui->tableView->setModel(model);
 }

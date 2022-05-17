@@ -29,10 +29,6 @@ private slots:
 
     void on_exitButton_clicked();
 
-    //void on_addMembers_clicked();
-
-    void on_memberUpgrade_clicked();
-
 private:
     Ui::Admin *ui;
     SalesReport* SalesReportWindow = NULL;

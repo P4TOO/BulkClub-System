@@ -25,6 +25,8 @@ private slots:
 
     void on_actionManage_Members_triggered();
 
+    void on_addMembers_clicked();
+
 private:
     Ui::Admin *ui;
     SalesReport* SalesReportWindow = NULL;

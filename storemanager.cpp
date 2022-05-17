@@ -1,7 +1,6 @@
 #include "storemanager.h"
 #include "ui_storemanager.h"
 #include <QMessageBox>
-#include "salesreport.h"
 
 StoreManager::StoreManager(QWidget *parent) :
     QMainWindow(parent),
@@ -19,26 +18,21 @@ StoreManager::~StoreManager()
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");
+
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v5/BulkClubProject.db");
+
 
     if(!db.open())
     {
         QMessageBox::information(this, "Not Connected", "Database is not connected");
 
-    }
-    else
+    } else
     {
         QMessageBox::information(this, "Connected", "Database connected successfully");
 
     }
 
 }
-
-void StoreManager::on_actionSales_Report_triggered()
-{
-
-}
-
 
 void StoreManager::on_sales_report_clicked()
 {
@@ -60,10 +54,14 @@ void StoreManager::on_member_purchases_clicked()
     purchasesWindow->show();
 }
 
-
 void StoreManager::on_member_rebates_clicked()
 {
     rebateDisplay = new rebateWindow;
     rebateDisplay->show();
 }
 
+void StoreManager::on_item_inventory_clicked()
+{
+    itemDisplayWindow = new itemDisplay;
+    itemDisplayWindow->show();
+}

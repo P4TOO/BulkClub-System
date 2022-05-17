@@ -19,7 +19,7 @@ Admin::~Admin()
 void Admin::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");
+    db.setDatabaseName("C:/Users/mitch/BulkClub-System/BulkClubProject.db");
 
     if(!db.open())
     {
@@ -44,6 +44,14 @@ void Admin::on_manageMembersPushButton_clicked()
     ManageMembersWindow = new managemembers;
     ManageMembersWindow->show();
 }
+
+/*
+void Admin::on_memberUpgrade_clicked()
+{
+    MemberUpgradeWindow = new memberupgrade;
+    MemberUpgradeWindow->show();
+}
+ */
 
 
 void Admin::on_exitButton_clicked()

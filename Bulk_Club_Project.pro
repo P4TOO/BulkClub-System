@@ -13,12 +13,14 @@ INCLUDEPATH += "C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3"
 SOURCES += \
     addmember.cpp \
     admin.cpp \
+    itemdisplay.cpp \
     logindialog.cpp \
     main.cpp \
     manageinventory.cpp \
     memberpurchases.cpp \
     membershipexpiry.cpp \
     managemembers.cpp \
+    memberupgrade.cpp \
     rebatewindow.cpp \
     salesreport.cpp \
     storemanager.cpp
@@ -26,11 +28,13 @@ SOURCES += \
 HEADERS += \
     addmember.h \
     admin.h \
+    itemdisplay.h \
     logindialog.h \
     manageinventory.h \
     memberpurchases.h \
     membershipexpiry.h \
     managemembers.h \
+    memberupgrade.h \
     picosha2.h \
     rebatewindow.h \
     salesreport.h \
@@ -39,10 +43,15 @@ HEADERS += \
 FORMS += \
     addmember.ui \
     admin.ui \
+<<<<<<< HEAD
     manageinventory.ui \
+=======
+    itemdisplay.ui \
+>>>>>>> a48879b9c033f01e86ea324fa9739fcb33c354c8
     memberpurchases.ui \
     membershipexpiry.ui \
     managemembers.ui \
+    memberupgrade.ui \
     rebatewindow.ui \
     salesreport.ui \
     storemanager.ui

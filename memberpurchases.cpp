@@ -12,6 +12,40 @@ memberPurchases::memberPurchases(QWidget *parent) :
     ui(new Ui::memberPurchases)
 {
     ui->setupUi(this);
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+    db.open();                                                                  //the .db file should be kept within the repository for now
+
+    QSqlQueryModel * model0 = new QSqlQueryModel();
+   //model is readonly access to query results
+    QSqlQuery query(db);
+    query.prepare("SELECT Membership_number, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Inventory GROUP BY Membership_number ORDER BY Membership_number");
+
+    query.exec(); //query must be active before being moved into the model
+
+    model0->setQuery(std::move(query));
+
+    ui->tableView->setModel(model0);
+
+    QSqlRecord totalMemberSalesRecord;
+    int totalSalesIterator1 = 0;
+    double salesPrice1 = 0;
+    //int salesQuantity1 = 0;
+    double runningTotal1 = 0;
+
+    do{
+            totalMemberSalesRecord = model0->record(totalSalesIterator1); //sets record to the row of the iterator in the model
+            salesPrice1 = totalMemberSalesRecord.value(1).toDouble(); //value at index 3 in the row should be Sales_Price
+            runningTotal1 += salesPrice1;
+            totalSalesIterator1++;
+        }while (!totalMemberSalesRecord.isNull(1));
+
+    QString finalTotal = finalTotal.number(runningTotal1,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
+    finalTotal.prepend("Total Purchases + tax: ");
+    ui->totalLabel->setText(finalTotal);
 }
 
 memberPurchases::~memberPurchases()
@@ -22,7 +56,7 @@ memberPurchases::~memberPurchases()
 void memberPurchases::on_idSearchButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString ID = ui->memberIDLineEdit->text();
@@ -48,7 +82,7 @@ void memberPurchases::on_idSearchButton_clicked()
     }while (!totalSalesRecord.isNull(3));
     runningTotal += runningTotal * 0.0775;
     QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
-    finalTotal.prepend("Total Purchases +tax: ");
+    finalTotal.prepend("Total Purchases + tax: ");
     ui->tableView->setModel(model);
     ui->totalLabel->setText(finalTotal);
 }
@@ -57,7 +91,7 @@ void memberPurchases::on_idSearchButton_clicked()
 void memberPurchases::on_nameSearchButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString name = ui->memberNameLineEdit->text();
@@ -94,7 +128,7 @@ void memberPurchases::on_nameSearchButton_clicked()
     }while (!totalSalesRecord.isNull(3));
     runningTotal += runningTotal * 0.0775;
     QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
-    finalTotal.prepend("Total Purchases +tax: ");
+    finalTotal.prepend("Total Purchases + tax: ");
     ui->tableView->setModel(model2);
     ui->totalLabel->setText(finalTotal);
 }

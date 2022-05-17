@@ -17,23 +17,10 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="checkDatabaseConnection">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>20</y>
-      <width>131</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Database Connection</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="member_rebates">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>280</x>
       <y>240</y>
       <width>181</width>
       <height>51</height>
@@ -54,10 +41,10 @@
    <widget class="QPushButton" name="member_purchases">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>280</x>
       <y>300</y>
       <width>181</width>
-      <height>48</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -75,7 +62,7 @@
    <widget class="QPushButton" name="membership_expiry_search">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>280</x>
       <y>180</y>
       <width>181</width>
       <height>48</height>
@@ -96,10 +83,10 @@
    <widget class="QPushButton" name="item_inventory">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>300</y>
-      <width>181</width>
-      <height>48</height>
+      <x>130</x>
+      <y>270</y>
+      <width>141</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
@@ -117,10 +104,10 @@
    <widget class="QPushButton" name="sales_report">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>130</x>
       <y>180</y>
-      <width>181</width>
-      <height>48</height>
+      <width>141</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
@@ -136,27 +123,6 @@
     </property>
     <property name="text">
      <string>Sales Report</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="total_purchases">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>240</y>
-      <width>181</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(105, 146, 255)</string>
-    </property>
-    <property name="text">
-     <string>Total Purchases</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -177,22 +143,6 @@
      <string>Welcome Store Manager</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="exitButton">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>20</y>
-      <width>131</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(241, 115, 0)</string>
-    </property>
-    <property name="text">
-     <string>Exit</string>
-    </property>
-   </widget>
    <widget class="QGraphicsView" name="graphicsView_2">
     <property name="geometry">
      <rect>
@@ -209,7 +159,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>50</x>
       <y>0</y>
       <width>51</width>
       <height>61</height>
@@ -222,14 +172,42 @@
      <pixmap>../Misc 2/Downloads/output-onlinepngtools.png</pixmap>
     </property>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>10</y>
+      <width>232</width>
+      <height>53</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="checkDatabaseConnection">
+       <property name="text">
+        <string>Database Connection</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exitButton">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(241, 115, 0)</string>
+       </property>
+       <property name="text">
+        <string>Exit</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>graphicsView_2</zorder>
    <zorder>member_rebates</zorder>
    <zorder>member_purchases</zorder>
    <zorder>membership_expiry_search</zorder>
    <zorder>item_inventory</zorder>
    <zorder>sales_report</zorder>
-   <zorder>total_purchases</zorder>
    <zorder>label</zorder>
-   <zorder>graphicsView_2</zorder>
    <zorder>checkDatabaseConnection</zorder>
    <zorder>exitButton</zorder>
    <zorder>label_2</zorder>

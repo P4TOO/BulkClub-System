@@ -1,8 +1,6 @@
 #include "storemanager.h"
 #include "ui_storemanager.h"
 #include <QMessageBox>
-#include "salesreport.h"
-//#include "itemdisplay.h"
 
 StoreManager::StoreManager(QWidget *parent) :
     QMainWindow(parent),
@@ -55,19 +53,14 @@ void StoreManager::on_member_purchases_clicked()
     purchasesWindow->show();
 }
 
-/*
-void StoreManager::on_item_inventory_clicked()
-{
-    itemDisplayWindow = new itemDisplay;
-    itemDisplayWindow->show();
-}
- */
-
-
 void StoreManager::on_member_rebates_clicked()
 {
     rebateDisplay = new rebateWindow;
     rebateDisplay->show();
 }
 
-
+void StoreManager::on_item_inventory_clicked()
+{
+    itemDisplayWindow = new itemDisplay;
+    itemDisplayWindow->show();
+}

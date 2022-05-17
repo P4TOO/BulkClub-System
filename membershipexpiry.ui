@@ -33,7 +33,10 @@
     <item>
      <widget class="QLineEdit" name="dateLineEdit">
       <property name="text">
-       <string>MMDDYYYY</string>
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>MM/DD/YYYY</string>
       </property>
      </widget>
     </item>

@@ -42,8 +42,8 @@ SalesReport::SalesReport(QWidget *parent) :
         runningTotal += salesPrice * salesQuantity;
         totalSalesIterator++;
     }while (!totalSalesRecord.isNull(3));
+    runningTotal += runningTotal * 0.0775;
     QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
-
 
     ui->tableView->setModel(model);
 

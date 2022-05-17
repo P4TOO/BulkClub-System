@@ -18,14 +18,15 @@ StoreManager::~StoreManager()
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/mitch/BulkClub-System/BulkClubProject.db");
+
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v5/BulkClubProject.db");
+
 
     if(!db.open())
     {
         QMessageBox::information(this, "Not Connected", "Database is not connected");
 
-    }
-    else
+    } else
     {
         QMessageBox::information(this, "Connected", "Database connected successfully");
 

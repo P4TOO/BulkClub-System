@@ -20,6 +20,8 @@ private slots:
 
     void on_DatePushButton_clicked();
 
+    void on_DatelineEdit_returnPressed();
+
 private:
     Ui::SalesReport *ui;
 

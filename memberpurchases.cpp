@@ -12,6 +12,21 @@ memberPurchases::memberPurchases(QWidget *parent) :
     ui(new Ui::memberPurchases)
 {
     ui->setupUi(this);
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+    db.open();                                                                  //the .db file should be kept within the repository for now
+
+    QSqlQueryModel * model0 = new QSqlQueryModel();
+   //model is readonly access to query results
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM Inventory");
+
+    query.exec(); //query must be active before being moved into the model
+
+    model0->setQuery(std::move(query));
 }
 
 memberPurchases::~memberPurchases()
@@ -22,7 +37,7 @@ memberPurchases::~memberPurchases()
 void memberPurchases::on_idSearchButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString ID = ui->memberIDLineEdit->text();
@@ -57,7 +72,7 @@ void memberPurchases::on_idSearchButton_clicked()
 void memberPurchases::on_nameSearchButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString name = ui->memberNameLineEdit->text();

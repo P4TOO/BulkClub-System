@@ -49,7 +49,7 @@
     <rect>
      <x>10</x>
      <y>780</y>
-     <width>101</width>
+     <width>121</width>
      <height>20</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Total Sales:</string>
+    <string>Total Sales(+tax):</string>
    </property>
   </widget>
   <widget class="QLabel" name="totalSalesNum">
@@ -102,19 +102,19 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit">
+         <widget class="QLineEdit" name="DatelineEdit">
           <property name="text">
            <string/>
           </property>
           <property name="placeholderText">
-           <string>MMDDYYYY</string>
+           <string>MM/DD/YYYY</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="DatePushButton">
         <property name="text">
          <string>Generate</string>
         </property>
@@ -134,7 +134,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox">
+         <widget class="QComboBox" name="MemberTypeComboBox">
           <item>
            <property name="text">
             <string>Regular</string>
@@ -150,7 +150,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="MemberTypePushButton">
         <property name="text">
          <string>Generate</string>
         </property>

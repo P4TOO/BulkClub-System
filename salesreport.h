@@ -15,6 +15,11 @@ public:
     explicit SalesReport(QWidget *parent = nullptr);
     ~SalesReport();
 
+private slots:
+    void on_MemberTypePushButton_clicked();
+
+    void on_DatePushButton_clicked();
+
 private:
     Ui::SalesReport *ui;
 

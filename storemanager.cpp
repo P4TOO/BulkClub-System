@@ -62,3 +62,12 @@ void StoreManager::on_item_inventory_clicked()
     itemDisplayWindow->show();
 }
  */
+
+
+void StoreManager::on_member_rebates_clicked()
+{
+    rebateDisplay = new rebateWindow;
+    rebateDisplay->show();
+}
+
+

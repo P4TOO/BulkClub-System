@@ -7,7 +7,11 @@
 #include "salesreport.h"
 #include "membershipexpiry.h"
 #include "memberpurchases.h"
+<<<<<<< HEAD
 #include "itemdisplay.h"
+=======
+#include "rebatewindow.h"
+>>>>>>> 81e16f3cae0af4df5e5a0056a22e5825a9dc25ff
 
 namespace Ui {
 class StoreManager;
@@ -34,12 +38,15 @@ private slots:
 
    // void on_item_inventory_clicked();
 
+    void on_member_rebates_clicked();
+
 private:
     Ui::StoreManager *ui;
     SalesReport* SalesReportWindow = NULL;
     MembershipExpiry* expiryWindow = NULL;
     memberPurchases* purchasesWindow = NULL;
     //itemDisplay* itemDisplayWindow = NULL;
+    rebateWindow* rebateDisplay = NULL;
 
 };
 

@@ -52,5 +52,3 @@ void Admin::on_exitButton_clicked()
 
 }
 
-
-

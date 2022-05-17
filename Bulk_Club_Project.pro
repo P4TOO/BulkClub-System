@@ -18,6 +18,7 @@ SOURCES += \
     memberpurchases.cpp \
     membershipexpiry.cpp \
     managemembers.cpp \
+    memberupgrade.cpp \
     rebatewindow.cpp \
     salesreport.cpp \
     storemanager.cpp
@@ -29,6 +30,7 @@ HEADERS += \
     memberpurchases.h \
     membershipexpiry.h \
     managemembers.h \
+    memberupgrade.h \
     picosha2.h \
     rebatewindow.h \
     salesreport.h \
@@ -40,6 +42,7 @@ FORMS += \
     memberpurchases.ui \
     membershipexpiry.ui \
     managemembers.ui \
+    memberupgrade.ui \
     rebatewindow.ui \
     salesreport.ui \
     storemanager.ui

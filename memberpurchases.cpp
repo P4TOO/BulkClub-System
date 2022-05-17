@@ -34,7 +34,23 @@ void memberPurchases::on_idSearchButton_clicked()
 
     model->setQuery(std::move(query));
 
+    QSqlRecord totalSalesRecord;//this record will hold an individual user data row
+    int totalSalesIterator = 0;
+    double salesPrice;
+    double salesQuantity;
+    double runningTotal = 0;
+    do{
+        totalSalesRecord = model->record(totalSalesIterator); //sets record to the row of the iterator in the model
+        salesPrice = totalSalesRecord.value(3).toDouble(); //value at index 3 in the row should be Sales_Price
+        salesQuantity = totalSalesRecord.value(4).toDouble(); //value at index 4 in the row should be Quantity_Purchased
+        runningTotal += salesPrice * salesQuantity;
+        totalSalesIterator++;
+    }while (!totalSalesRecord.isNull(3));
+    runningTotal += runningTotal * 0.0775;
+    QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
+    finalTotal.prepend("Total Purchases +tax: ");
     ui->tableView->setModel(model);
+    ui->totalLabel->setText(finalTotal);
 }
 
 
@@ -59,13 +75,28 @@ void memberPurchases::on_nameSearchButton_clicked()
     query2.prepare("SELECT * FROM Inventory WHERE Membership_Number=(:ID)");//uses the fetched ID to check for purchases associated with it
     query2.bindValue(":ID",id);
     query2.exec();
-
+    qDebug() << id;
 
     QSqlQueryModel * model2 = new QSqlQueryModel();
     model2->setQuery(std::move(query2));
 
-
+    QSqlRecord totalSalesRecord;//this record will hold an individual user data row
+    int totalSalesIterator = 0;
+    double salesPrice;
+    double salesQuantity;
+    double runningTotal = 0;
+    do{
+        totalSalesRecord = model2->record(totalSalesIterator); //sets record to the row of the iterator in the model
+        salesPrice = totalSalesRecord.value(3).toDouble(); //value at index 3 in the row should be Sales_Price
+        salesQuantity = totalSalesRecord.value(4).toDouble(); //value at index 4 in the row should be Quantity_Purchased
+        runningTotal += salesPrice * salesQuantity;
+        totalSalesIterator++;
+    }while (!totalSalesRecord.isNull(3));
+    runningTotal += runningTotal * 0.0775;
+    QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
+    finalTotal.prepend("Total Purchases +tax: ");
     ui->tableView->setModel(model2);
+    ui->totalLabel->setText(finalTotal);
 }
 
 

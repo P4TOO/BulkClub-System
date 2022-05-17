@@ -80,7 +80,7 @@
     <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -102,12 +102,12 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit">
+         <widget class="QLineEdit" name="DatelineEdit">
           <property name="text">
            <string/>
           </property>
           <property name="placeholderText">
-           <string>MMDDYYYY</string>
+           <string>MM/DD/YYYY</string>
           </property>
          </widget>
         </item>
@@ -134,7 +134,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="comboBox">
+         <widget class="QComboBox" name="MemberTypeComboBox">
           <item>
            <property name="text">
             <string>Regular</string>
@@ -150,7 +150,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="MemberTypePushButton">
         <property name="text">
          <string>Generate</string>
         </property>

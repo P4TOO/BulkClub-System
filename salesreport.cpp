@@ -17,7 +17,7 @@ SalesReport::SalesReport(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v5/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
     db.open();                                                                  //the .db file should be kept within the repository for now
 
@@ -55,3 +55,76 @@ SalesReport::~SalesReport()
 {
     delete ui;
 }
+
+void SalesReport::on_MemberTypePushButton_clicked()
+{
+    if (ui->MemberTypeComboBox->currentText() == "Regular")
+    {
+
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+        db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v5/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+        db.open();                                                                  //the .db file should be kept within the repository for now
+
+        QSqlQueryModel * model = new QSqlQueryModel();
+       //model is readonly access to query results
+        QSqlQuery query(db);
+        query.prepare("SELECT Purchase_Date, Item_Purchased, Sales_Price, Quantity_Purchased, Member_Name, Membership_ID, Membership_Type FROM INVENTORY, Members WHERE Inventory.Membership_Number = Members.Membership_ID AND Members.Membership_Type = 'Regular' ORDER BY Purchase_Date");
+
+        query.exec(); //query must be active before being moved into the model
+        model->setQuery(std::move(query));
+
+        ui->tableView->setModel(model);
+
+    }
+
+    if (ui->MemberTypeComboBox->currentText() == "Executive")
+    {
+
+
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+        db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v5/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+        db.open();                                                                  //the .db file should be kept within the repository for now
+
+        QSqlQueryModel * model = new QSqlQueryModel();
+       //model is readonly access to query results
+        QSqlQuery query(db);
+        query.prepare("SELECT Purchase_Date, Item_Purchased, Sales_Price, Quantity_Purchased, Member_Name, Membership_ID, Membership_Type FROM INVENTORY, Members WHERE Inventory.Membership_Number = Members.Membership_ID AND Members.Membership_Type = 'Executive' ORDER BY Purchase_Date");
+
+        query.exec(); //query must be active before being moved into the model
+        model->setQuery(std::move(query));
+
+        ui->tableView->setModel(model);
+
+    }
+
+
+}
+
+
+void SalesReport::on_pushButton_clicked()
+{
+    QString date = ui->DatelineEdit->text();
+
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v5/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+    db.open();                                                                  //the .db file should be kept within the repository for now
+
+    QSqlQueryModel * model = new QSqlQueryModel();
+   //model is readonly access to query results
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM Inventory WHERE Purchase_Date =(:date)");
+    query.bindValue(":date", date);
+
+    query.exec(); //query must be active before being moved into the model
+    model->setQuery(std::move(query));
+
+    ui->tableView->setModel(model);
+
+}
+

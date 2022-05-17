@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include "salesreport.h"
 #include "managemembers.h"
-
+#include "memberpurchases.h"
 Admin::Admin(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Admin)
@@ -19,7 +19,7 @@ Admin::~Admin()
 void Admin::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3/BulkClubProject.db");
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");
 
     if(!db.open())
     {
@@ -37,10 +37,18 @@ void Admin::on_actionSales_Report_triggered()
     SalesReportWindow->show();
 }
 
-void Admin::on_actionManage_Members_triggered()
+
+
+void Admin::on_manageMembersPushButton_clicked()
 {
     ManageMembersWindow = new managemembers;
     ManageMembersWindow->show();
 }
 
+
+void Admin::on_exitButton_clicked()
+{
+    this->close();
+
+}
 

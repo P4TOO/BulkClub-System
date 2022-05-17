@@ -53,9 +53,4 @@ void Admin::on_exitButton_clicked()
 }
 
 
-void Admin::on_MemberPurchasesPushButton_clicked()
-{
-    MemberPurchasesWindow = new memberPurchases;
-    MemberPurchasesWindow->show();
-}
 

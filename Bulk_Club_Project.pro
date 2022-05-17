@@ -15,6 +15,7 @@ SOURCES += \
     admin.cpp \
     logindialog.cpp \
     main.cpp \
+    manageinventory.cpp \
     memberpurchases.cpp \
     membershipexpiry.cpp \
     managemembers.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     addmember.h \
     admin.h \
     logindialog.h \
+    manageinventory.h \
     memberpurchases.h \
     membershipexpiry.h \
     managemembers.h \
@@ -37,6 +39,7 @@ HEADERS += \
 FORMS += \
     addmember.ui \
     admin.ui \
+    manageinventory.ui \
     memberpurchases.ui \
     membershipexpiry.ui \
     managemembers.ui \

@@ -52,3 +52,10 @@ void Admin::on_exitButton_clicked()
 
 }
 
+
+void Admin::on_ManageInventoryPushbutton_clicked()
+{
+    inventoryEditWindow = new ManageInventory;
+    inventoryEditWindow->show();
+}
+

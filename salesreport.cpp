@@ -24,7 +24,7 @@ SalesReport::SalesReport(QWidget *parent) :
     QSqlQueryModel * model = new QSqlQueryModel();
    //model is readonly access to query results
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Inventory");
+    query.prepare("SELECT * FROM Sales_Record");
 
     query.exec(); //query must be active before being moved into the model
 
@@ -71,7 +71,7 @@ void SalesReport::on_MemberTypePushButton_clicked()
         QSqlQueryModel * model = new QSqlQueryModel();
        //model is readonly access to query results
         QSqlQuery query(db);
-        query.prepare("SELECT Purchase_Date, Item_Purchased, Sales_Price, Quantity_Purchased, Member_Name, Membership_ID, Membership_Type FROM INVENTORY, Members WHERE Inventory.Membership_Number = Members.Membership_ID AND Members.Membership_Type = 'Regular' ORDER BY Purchase_Date");
+        query.prepare("SELECT * FROM Sales_Record, Members WHERE Sales_Record.Membership_Number = Members.Membership_ID AND Members.Membership_Type = 'Regular' ORDER BY Purchase_Date");
 
         query.exec(); //query must be active before being moved into the model
         model->setQuery(std::move(query));
@@ -110,7 +110,7 @@ void SalesReport::on_MemberTypePushButton_clicked()
         QSqlQueryModel * model = new QSqlQueryModel();
        //model is readonly access to query results
         QSqlQuery query(db);
-        query.prepare("SELECT Purchase_Date, Item_Purchased, Sales_Price, Quantity_Purchased, Member_Name, Membership_ID, Membership_Type FROM INVENTORY, Members WHERE Inventory.Membership_Number = Members.Membership_ID AND Members.Membership_Type = 'Executive' ORDER BY Purchase_Date");
+        query.prepare("SELECT * FROM Sales_Record, Members WHERE Sales_Record.Membership_Number = Members.Membership_ID AND Members.Membership_Type = 'Executive' ORDER BY Purchase_Date");
 
         query.exec(); //query must be active before being moved into the model
         model->setQuery(std::move(query));
@@ -153,7 +153,7 @@ void SalesReport::on_DatePushButton_clicked()
     QSqlQueryModel * model = new QSqlQueryModel();
    //model is readonly access to query results
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Inventory WHERE Purchase_Date =(:date)");
+    query.prepare("SELECT * FROM Sales_Record WHERE Purchase_Date =(:date)");
     query.bindValue(":date", date);
 
     query.exec(); //query must be active before being moved into the model

@@ -27,6 +27,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(105, 146, 255)</string>
+   </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
    </property>

@@ -58,7 +58,7 @@
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(241, 115, 0)</string>
+         <string notr="true">background-color: rgb(105, 146, 255)</string>
         </property>
         <property name="text">
          <string>Search</string>
@@ -129,7 +129,7 @@
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">background-color: rgb(241, 115, 0)</string>
       </property>
       <property name="text">
        <string>Cancel</string>

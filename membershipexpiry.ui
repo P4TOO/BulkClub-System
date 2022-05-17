@@ -25,6 +25,11 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Expiry Month</string>
       </property>
@@ -32,6 +37,11 @@
     </item>
     <item>
      <widget class="QLineEdit" name="dateLineEdit">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -42,6 +52,14 @@
     </item>
     <item>
      <widget class="QPushButton" name="searchButton">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(105, 146, 255)</string>
+      </property>
       <property name="text">
        <string>Search</string>
       </property>
@@ -49,6 +67,14 @@
     </item>
     <item>
      <widget class="QPushButton" name="cancelButton">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(241, 115, 0)</string>
+      </property>
       <property name="text">
        <string>Cancel</string>
       </property>

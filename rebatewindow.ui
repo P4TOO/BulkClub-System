@@ -27,6 +27,9 @@
      <pointsize>12</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(241, 115, 0)</string>
+   </property>
    <property name="text">
     <string>Close</string>
    </property>

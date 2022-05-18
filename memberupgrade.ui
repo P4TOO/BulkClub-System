@@ -72,6 +72,32 @@
     <string>Regular Memebers that Should Upgrade</string>
    </property>
   </widget>
+  <widget class="QLabel" name="upgradeLabel">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>260</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Upgrades: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="downgradeLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>301</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Downgrades: </string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

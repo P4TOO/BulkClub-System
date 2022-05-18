@@ -2,6 +2,7 @@
 #define MEMBERUPGRADE_H
 
 #include <QDialog>
+#include <QModelIndex>
 
 namespace Ui {
 class memberupgrade;
@@ -20,6 +21,7 @@ private slots:
 
 private:
     Ui::memberupgrade *ui;
+    QModelIndex invalidIndex;
 };
 
 #endif // MEMBERUPGRADE_H

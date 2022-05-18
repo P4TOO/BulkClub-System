@@ -14,7 +14,7 @@ memberupgrade::memberupgrade(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C://Users/mitch/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model = new QSqlQueryModel();
@@ -25,6 +25,11 @@ memberupgrade::memberupgrade(QWidget *parent) :
     query.exec();
 
     model->setQuery(std::move(query));
+
+    int downgradeCount = model->rowCount(invalidIndex);
+    QString downgradeString = "Downgrades: ";
+    downgradeString.append(QString::number(downgradeCount));
+    ui->downgradeLabel->setText(downgradeString);
 
     ui->tableView->setModel(model);
 
@@ -38,6 +43,10 @@ memberupgrade::memberupgrade(QWidget *parent) :
 
     model2->setQuery(std::move(query2));
 
+    int upgradeCount = model2->rowCount(invalidIndex);
+    QString upgradeString = "Upgrades: ";
+    upgradeString.append(QString::number(upgradeCount));
+    ui->upgradeLabel->setText(upgradeString);
     ui->tableView_2->setModel(model2);
 }
 

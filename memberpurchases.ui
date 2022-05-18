@@ -23,12 +23,12 @@
     </rect>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>100</x>
      <y>410</y>
-     <width>271</width>
+     <width>381</width>
      <height>111</height>
     </rect>
    </property>

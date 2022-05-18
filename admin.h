@@ -6,6 +6,7 @@
 #include <QSqlDatabase>
 #include "salesreport.h"
 #include "managemembers.h"
+#include "manageinventory.h"
 #include "memberupgrade.h"
 
 namespace Ui {
@@ -29,11 +30,17 @@ private slots:
 
     void on_exitButton_clicked();
 
+    void on_addMembers_clicked();
+
+    void on_ManageInventoryPushbutton_clicked();
+
     //void on_memberUpgrade_clicked();
+
 private:
     Ui::Admin *ui;
     SalesReport* SalesReportWindow = NULL;
     managemembers* ManageMembersWindow = NULL;
+    ManageInventory* inventoryEditWindow = NULL;
     memberupgrade* MemberUpgradeWindow = NULL;
 
 };

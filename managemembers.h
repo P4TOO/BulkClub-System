@@ -19,8 +19,6 @@ public:
 private slots:
     void on_searchPushButton_clicked();
 
-    //void on_pushButton_2_clicked();
-
     void on_AddMemberButton_clicked();
 
     void on_deletePushButton_clicked();

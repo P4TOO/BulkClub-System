@@ -23,7 +23,7 @@ itemDisplay::itemDisplay(QWidget *parent) :
 
     QSqlQuery query(db);
 
-    query.prepare("SELECT item_purchased, SUM(sales_price* quantity_purchased) AS Total_Price , SUM(quantity_purchased) AS Total_Quantity FROM Inventory GROUP BY item_purchased ORDER BY Total_Price DESC");
+    query.prepare("SELECT item_purchased, SUM(sales_price* quantity_purchased) AS Total_Price , SUM(quantity_purchased) AS Total_Quantity FROM sales_record GROUP BY item_purchased ORDER BY Total_Price DESC");
 
     query.exec();
 
@@ -49,7 +49,7 @@ void itemDisplay::on_searchButton_clicked()
     QString item = ui->itemSearchBar->text();
     QSqlQueryModel * model2 = new QSqlQueryModel();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Inventory WHERE Item_Purchased=(:item)");
+    query.prepare("SELECT * FROM sales_record WHERE Item_Purchased=(:item)");
     query.bindValue(":item",item);
     query.exec();
 

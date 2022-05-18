@@ -67,3 +67,9 @@ void Admin::on_ManageInventoryPushbutton_clicked()
     inventoryEditWindow->show();
 }
 
+
+void Admin::on_actionSave_triggered()
+{
+    QMessageBox::information(this, "Save", "Success, all changes saved");
+}
+

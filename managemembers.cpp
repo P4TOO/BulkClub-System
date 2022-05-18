@@ -125,3 +125,21 @@ void managemembers::on_deletePushButton_clicked()
 }
 
 
+
+void managemembers::on_searchLineEdit_returnPressed()
+{
+    managemembers::on_searchPushButton_clicked();
+}
+
+
+void managemembers::on_deleteMemberLineEdit_returnPressed()
+{
+    managemembers::on_deletePushButton_clicked();
+}
+
+
+void managemembers::on_ExitButton_clicked()
+{
+    this->close();
+}
+

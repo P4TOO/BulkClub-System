@@ -179,3 +179,15 @@ void memberPurchases::on_DisplayAllPushButton_clicked()
     ui->totalLabel->setText(finalTotal);
 }
 
+
+void memberPurchases::on_memberIDLineEdit_returnPressed()
+{
+    memberPurchases::on_idSearchButton_clicked();
+}
+
+
+void memberPurchases::on_memberNameLineEdit_returnPressed()
+{
+    memberPurchases::on_nameSearchButton_clicked();
+}
+

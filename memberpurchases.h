@@ -24,6 +24,10 @@ private slots:
 
     void on_DisplayAllPushButton_clicked();
 
+    void on_memberIDLineEdit_returnPressed();
+
+    void on_memberNameLineEdit_returnPressed();
+
 private:
     Ui::memberPurchases *ui;
 };

@@ -16,7 +16,6 @@ memberPurchases::memberPurchases(QWidget *parent) :
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
     db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
-
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model0 = new QSqlQueryModel();
@@ -110,10 +109,7 @@ void memberPurchases::on_nameSearchButton_clicked()
     query2.prepare("SELECT * FROM Sales_Record WHERE Membership_Number=(:ID)");//uses the fetched ID to check for purchases associated with it
     query2.bindValue(":ID",id);
     query2.exec();
-
-    QSqlQueryModel * model2 = new QSqlQueryModel();
-    model2->setQuery(std::move(query2));
-
+    model->setQuery(std::move(query2));
 
     QSqlRecord totalSalesRecord;//this record will hold an individual user data row
     int totalSalesIterator = 0;
@@ -121,7 +117,7 @@ void memberPurchases::on_nameSearchButton_clicked()
     double salesQuantity;
     double runningTotal = 0;
     do{
-        totalSalesRecord = model2->record(totalSalesIterator); //sets record to the row of the iterator in the model
+        totalSalesRecord = model->record(totalSalesIterator); //sets record to the row of the iterator in the model
         salesPrice = totalSalesRecord.value(3).toDouble(); //value at index 3 in the row should be Sales_Price
         salesQuantity = totalSalesRecord.value(4).toDouble(); //value at index 4 in the row should be Quantity_Purchased
         runningTotal += salesPrice * salesQuantity;
@@ -130,7 +126,7 @@ void memberPurchases::on_nameSearchButton_clicked()
     runningTotal += runningTotal * 0.0775;
     QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
     finalTotal.prepend("Total Purchases + tax: ");
-    ui->tableView->setModel(model2);
+    ui->tableView->setModel(model);
     ui->totalLabel->setText(finalTotal);
 }
 
@@ -146,6 +142,7 @@ void memberPurchases::on_DisplayAllPushButton_clicked()
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
     db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
 
     db.open();                                                                  //the .db file should be kept within the repository for now
 

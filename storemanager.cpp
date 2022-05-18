@@ -58,5 +58,6 @@ void StoreManager::on_new_purchase_clicked()
 void StoreManager::on_logout_clicked()
 {
     close();
+
 }
 

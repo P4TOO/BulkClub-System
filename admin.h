@@ -33,7 +33,7 @@ private slots:
 
     void on_ManageInventoryPushbutton_clicked();
 
-    //void on_memberUpgrade_clicked();
+    void on_memberUpgrade_clicked();
 
     void on_actionSave_triggered();
 

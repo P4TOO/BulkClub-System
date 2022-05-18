@@ -15,6 +15,28 @@ StoreManager::~StoreManager()
 }
 
 
+<<<<<<< Updated upstream
+=======
+void  StoreManager::on_pushButton_clicked()
+{
+    QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
+
+    db.setDatabaseName("C://Users/mitch/BulkClub-System/BulkClubProject.db");
+
+
+    if(!db.open())
+    {
+        QMessageBox::information(this, "Not Connected", "Database is not connected");
+
+    } else
+    {
+        QMessageBox::information(this, "Connected", "Database connected successfully");
+
+    }
+
+}
+
+>>>>>>> Stashed changes
 void StoreManager::on_sales_report_clicked()
 {
     SalesReportWindow = new SalesReport;

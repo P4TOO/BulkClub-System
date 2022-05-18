@@ -15,7 +15,7 @@ rebateWindow::rebateWindow(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/mitch/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlTableModel * model = new QSqlTableModel();

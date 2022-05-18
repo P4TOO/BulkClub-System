@@ -1,0 +1,244 @@
+\hypertarget{salesreport_8cpp_source}{}\doxysection{salesreport.\+cpp}
+\mbox{\hyperlink{salesreport_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{salesreport_8h}{salesreport.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_salesreport.h"{}}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QSqlDatabase>}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QSqlError>}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlQuery>}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <QSqlQueryModel>}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <QTableView>}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <QSqlRecord>}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00012}\mbox{\hyperlink{class_sales_report_aab95500c9fb2e4c7fbedc1899ce6056e}{00012}} \mbox{\hyperlink{class_sales_report_aab95500c9fb2e4c7fbedc1899ce6056e}{SalesReport::SalesReport}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00013}00013     QWidget(parent),}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00014}00014     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{class_sales_report}{SalesReport}})}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00016}00016     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00018}00018     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00020}00020     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00022}00022     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00024}00024     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00025}00025    \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00026}00026     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00027}00027     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Sales\_Record"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00029}00029     query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00031}00031     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00033}00033     QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00034}00034     \textcolor{keywordtype}{int} totalSalesIterator = 1;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00035}00035     \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00036}00036     \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00037}00037     \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00038}00038     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00039}00039         totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00040}00040         salesPrice = totalSalesRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00041}00041         salesQuantity = totalSalesRecord.value(4).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00042}00042         runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00043}00043         totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00044}00044     \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00045}00045     runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00046}00046     QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00048}00048     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00049}00049     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00050}00050     ui-\/>totalSalesNum-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00053}00053 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00055}\mbox{\hyperlink{class_sales_report_a694b94d33bd59dd5c5a5e32df33a6745}{00055}} \mbox{\hyperlink{class_sales_report_a694b94d33bd59dd5c5a5e32df33a6745}{SalesReport::\string~SalesReport}}()}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00056}00056 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00057}00057     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00058}00058 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00060}00060 \textcolor{keywordtype}{void} SalesReport::on\_MemberTypePushButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00061}00061 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00062}00062     \textcolor{keywordflow}{if} (ui-\/>MemberTypeComboBox-\/>currentText() == \textcolor{stringliteral}{"{}Regular"{}})}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00063}00063     \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00065}00065         QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00067}00067         db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00070}00070         db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00072}00072         QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00073}00073        \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00074}00074         QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00075}00075         query.prepare(\textcolor{stringliteral}{"{}SELECT Purchase\_Date, Membership\_Number, Item\_Purchased, Sales\_Price, Quantity\_Purchased FROM Sales\_Record, Members WHERE Sales\_Record.Membership\_Number = Members.Membership\_ID AND Members.Membership\_Type = 'Regular' ORDER BY Purchase\_Date"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00077}00077         query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00078}00078         model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00080}00080         QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00081}00081         \textcolor{keywordtype}{int} totalSalesIterator = 1;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00082}00082         \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00083}00083         \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00084}00084         \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00085}00085         \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00086}00086             totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00087}00087             salesPrice = totalSalesRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00088}00088             salesQuantity = totalSalesRecord.value(4).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00089}00089             runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00090}00090             totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00091}00091         \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00092}00092         runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00093}00093         QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00094}00094 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00095}00095         ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00097}00097         ui-\/>totalSalesNum-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00099}00099     \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00101}00101     \textcolor{keywordflow}{if} (ui-\/>MemberTypeComboBox-\/>currentText() == \textcolor{stringliteral}{"{}Executive"{}})}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00102}00102     \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00105}00105         QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00106}00106         db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00107}00107         db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00109}00109         QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00110}00110        \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00111}00111         QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00112}00112         query.prepare(\textcolor{stringliteral}{"{}SELECT Purchase\_Date, Membership\_Number, Item\_Purchased, Sales\_Price, Quantity\_Purchased FROM Sales\_Record, Members WHERE Sales\_Record.Membership\_Number = Members.Membership\_ID AND Members.Membership\_Type = 'Executive' ORDER BY Purchase\_Date"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00114}00114         query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00115}00115         model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00117}00117         QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00118}00118         \textcolor{keywordtype}{int} totalSalesIterator = 1;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00119}00119         \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00120}00120         \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00121}00121         \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00122}00122         \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00123}00123             totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00124}00124             salesPrice = totalSalesRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00125}00125             salesQuantity = totalSalesRecord.value(4).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00126}00126             runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00127}00127             totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00128}00128         \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00129}00129         runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00130}00130         QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00132}00132         ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00133}00133         ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00134}00134         ui-\/>totalSalesNum-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00136}00136     \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00139}00139 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00142}00142 \textcolor{keywordtype}{void} SalesReport::on\_DatePushButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00143}00143 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00144}00144     QString date = ui-\/>DatelineEdit-\/>text();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00145}00145 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00146}00146     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00147}00147     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00148}00148     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00150}00150     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00151}00151    \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00152}00152     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00153}00153     query.prepare(\textcolor{stringliteral}{"{}SELECT Sales\_Record.Purchase\_Date,Members.Member\_Name,Members.Membership\_Type,Sales\_Record.Membership\_Number,Sales\_Record.Item\_Purchased,Sales\_Record.Sales\_Price,Sales\_Record.Quantity\_Purchased FROM Sales\_Record LEFT JOIN Members ON Sales\_Record.Membership\_Number = Members.Membership\_ID WHERE Purchase\_Date=(:date)"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00154}00154     query.bindValue(\textcolor{stringliteral}{"{}:date"{}}, date);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00156}00156     query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00157}00157     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00159}00159     QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00160}00160     \textcolor{keywordtype}{int} totalSalesIterator = 1;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00161}00161     \textcolor{keywordtype}{int} execAmount=0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00162}00162     \textcolor{keywordtype}{int} regAmount=0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00163}00163     \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00164}00164     \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00165}00165     \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00166}00166     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00167}00167         totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00168}00168         salesPrice = totalSalesRecord.value(5).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00169}00169         salesQuantity = totalSalesRecord.value(6).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00170}00170         runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00171}00171         totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00172}00172         \textcolor{keywordflow}{if}(totalSalesRecord.value(2).toString()==\textcolor{stringliteral}{"{}Executive"{}})\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00173}00173             execAmount++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00174}00174         \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00175}00175         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00176}00176             regAmount++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00177}00177         \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00178}00178     \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(4));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00179}00179     runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00180}00180     QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00182}00182     ui-\/>execAmtLabel-\/>setText(QString::number(execAmount));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00183}00183     ui-\/>regAmtLabel-\/>setText(QString::number(regAmount));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00185}00185     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00187}00187     ui-\/>totalSalesNum-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00189}00189 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00192}00192 \textcolor{keywordtype}{void} SalesReport::on\_DatelineEdit\_returnPressed()}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00193}00193 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00194}00194     SalesReport::on\_DatePushButton\_clicked();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00195}00195 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00198}00198 \textcolor{keywordtype}{void} SalesReport::on\_ExitButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00199}00199 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00200}00200     this-\/>close();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00201}00201 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00204}00204 \textcolor{keywordtype}{void} SalesReport::on\_AllTimeButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00205}00205 \{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00206}00206     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00207}00207     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00208}00208     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00209}00209 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00210}00210     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00211}00211    \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00212}00212     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00213}00213     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Sales\_Record"{}});}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00215}00215     query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00216}00216 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00217}00217     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00219}00219     QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00220}00220     \textcolor{keywordtype}{int} totalSalesIterator = 1;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00221}00221     \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00222}00222     \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00223}00223     \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00224}00224     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00225}00225         totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00226}00226         salesPrice = totalSalesRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00227}00227         salesQuantity = totalSalesRecord.value(4).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00228}00228         runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00229}00229         totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00230}00230     \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00231}00231     runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00232}00232     QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00234}00234     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00235}00235     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00236}00236     ui-\/>totalSalesNum-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00238}00238 \}}
+\DoxyCodeLine{\Hypertarget{salesreport_8cpp_source_l00239}00239 }
+
+\end{DoxyCode}

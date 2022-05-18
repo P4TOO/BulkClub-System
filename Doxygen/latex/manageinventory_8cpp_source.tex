@@ -1,0 +1,66 @@
+\hypertarget{manageinventory_8cpp_source}{}\doxysection{manageinventory.\+cpp}
+\mbox{\hyperlink{manageinventory_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{manageinventory_8h}{manageinventory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_manageinventory.h"{}}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QModelIndex>}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QMessageBox>}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00006}\mbox{\hyperlink{class_manage_inventory_a97a28f678c548feb7e9891f5927f983f}{00006}} \mbox{\hyperlink{class_manage_inventory_a97a28f678c548feb7e9891f5927f983f}{ManageInventory::ManageInventory}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00007}00007     QWidget(parent),}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00008}00008     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{class_manage_inventory}{ManageInventory}})}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00009}00009 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00010}00010     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00012}00012     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00013}00013     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-\/System\_v6/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00014}00014     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00015}00015     model = \textcolor{keyword}{new} QSqlTableModel(NULL,db);}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00016}00016     model-\/>setTable(\textcolor{stringliteral}{"{}Inventory"{}});}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00017}00017     model-\/>setEditStrategy(QSqlTableModel::OnManualSubmit);}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00018}00018     model-\/>select();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00020}00020     ui-\/>RowToDel-\/>setMaximum(model-\/>rowCount(invalidIndex));}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00021}00021     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00022}00022     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00023}00023     ui-\/>tableView-\/>show();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00024}00024 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00026}\mbox{\hyperlink{class_manage_inventory_a5f2c7ba2861457e5015cb7710e6f1a8b}{00026}} \mbox{\hyperlink{class_manage_inventory_a5f2c7ba2861457e5015cb7710e6f1a8b}{ManageInventory::\string~ManageInventory}}()}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00028}00028     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00033}00033 \textcolor{keywordtype}{void} ManageInventory::on\_SaveButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00034}00034 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00035}00035     model-\/>submitAll();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00036}00036     QMessageBox::information(\textcolor{keyword}{this}, \textcolor{stringliteral}{"{}Save"{}}, \textcolor{stringliteral}{"{}Success, all changes saved"{}});}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00041}00041 \textcolor{keywordtype}{void} ManageInventory::on\_Cancelbutton\_clicked()}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00043}00043     model-\/>revertAll();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00044}00044     close();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00048}00048 \textcolor{keywordtype}{void} ManageInventory::on\_AddRowButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00050}00050     model-\/>insertRows(model-\/>rowCount(invalidIndex),1);}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00051}00051     ui-\/>RowToDel-\/>setMaximum(model-\/>rowCount(invalidIndex));}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00052}00052 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00055}00055 \textcolor{keywordtype}{void} ManageInventory::on\_DelRowButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00056}00056 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00057}00057     model-\/>removeRows(ui-\/>RowToDel-\/>value()-\/1,1,invalidIndex);}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00058}00058     ui-\/>RowToDel-\/>setMaximum(model-\/>rowCount(invalidIndex));}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00059}00059     model-\/>submitAll();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8cpp_source_l00061}00061 }
+
+\end{DoxyCode}

@@ -33,7 +33,9 @@ private slots:
     void on_item_inventory_clicked();
 
     void on_member_rebates_clicked();
+
     void on_new_purchase_clicked();
+
     void on_logout_clicked();
 
 private:

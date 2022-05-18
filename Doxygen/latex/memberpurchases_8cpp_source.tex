@@ -1,0 +1,195 @@
+\hypertarget{memberpurchases_8cpp_source}{}\doxysection{memberpurchases.\+cpp}
+\mbox{\hyperlink{memberpurchases_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{memberpurchases_8h}{memberpurchases.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_memberpurchases.h"{}}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QSqlDatabase>}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QSqlError>}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlQuery>}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <QSqlQueryModel>}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <QTableView>}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <QSqlRecord>}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00010}\mbox{\hyperlink{classmember_purchases_a6b92576fc19322047d7529325544f738}{00010}} \mbox{\hyperlink{classmember_purchases_a6b92576fc19322047d7529325544f738}{memberPurchases::memberPurchases}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00011}00011     QWidget(parent),}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00012}00012     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{classmember_purchases}{memberPurchases}})}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00014}00014     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00016}00016     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00018}00018     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00020}00020     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00022}00022     QSqlQueryModel * model0 = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00023}00023    \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00024}00024     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00025}00025     query.prepare(\textcolor{stringliteral}{"{}SELECT Membership\_Number, (SELECT Member\_Name from Members WHERE Members.Membership\_ID=Sales\_Record.Membership\_Number) as Member\_Name, SUM (sales\_price* quantity\_purchased * 1.0775) as Total\_Purchases FROM Sales\_Record GROUP BY Membership\_number ORDER BY Membership\_number"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00028}00028     query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00030}00030     model0-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00032}00032     ui-\/>tableView-\/>setModel(model0);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00033}00033     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00035}00035     QSqlRecord totalMemberSalesRecord;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00036}00036     \textcolor{keywordtype}{int} totalSalesIterator1 = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00037}00037     \textcolor{keywordtype}{double} salesPrice1 = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00038}00038     \textcolor{comment}{//int salesQuantity1 = 0;}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00039}00039     \textcolor{keywordtype}{double} runningTotal1 = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00041}00041     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00042}00042             totalMemberSalesRecord = model0-\/>record(totalSalesIterator1); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00043}00043             salesPrice1 = totalMemberSalesRecord.value(1).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00044}00044             runningTotal1 += salesPrice1;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00045}00045             totalSalesIterator1++;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00046}00046         \}\textcolor{keywordflow}{while} (!totalMemberSalesRecord.isNull(1));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00048}00048     QString finalTotal = finalTotal.number(runningTotal1,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00049}00049     finalTotal.prepend(\textcolor{stringliteral}{"{}Total Purchases + tax: "{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00050}00050     ui-\/>totalLabel-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00053}\mbox{\hyperlink{classmember_purchases_a691992b666686e7d2b50054bbc986465}{00053}} \mbox{\hyperlink{classmember_purchases_a691992b666686e7d2b50054bbc986465}{memberPurchases::\string~memberPurchases}}()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00055}00055     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00058}00058 \textcolor{keywordtype}{void} memberPurchases::on\_idSearchButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00060}00060     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00061}00061     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00062}00062     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00064}00064     QString ID = ui-\/>memberIDLineEdit-\/>text();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00065}00065     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00066}00066     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00067}00067     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Sales\_Record WHERE Membership\_Number=(:ID)"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00068}00068     query.bindValue(\textcolor{stringliteral}{"{}:ID"{}},ID);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00069}00069     query.exec();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00071}00071     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00073}00073     QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00074}00074     \textcolor{keywordtype}{int} totalSalesIterator = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00075}00075     \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00076}00076     \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00077}00077     \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00078}00078     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00079}00079         totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00080}00080         salesPrice = totalSalesRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00081}00081         salesQuantity = totalSalesRecord.value(4).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00082}00082         runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00083}00083         totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00084}00084     \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00085}00085     runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00086}00086     QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00087}00087     finalTotal.prepend(\textcolor{stringliteral}{"{}Total Purchases + tax: "{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00088}00088     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00089}00089     ui-\/>totalLabel-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00090}00090 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00093}00093 \textcolor{keywordtype}{void} memberPurchases::on\_nameSearchButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00094}00094 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00095}00095     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00096}00096     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00097}00097     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00099}00099     QString name = ui-\/>memberNameLineEdit-\/>text();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00100}00100     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00101}00101     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00102}00102     QSqlRecord record;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00103}00103     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Members WHERE Member\_Name=(:name)"{}});\textcolor{comment}{//This query is for getting the memberID that corresponds to the entered name}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00104}00104     query.bindValue(\textcolor{stringliteral}{"{}:name"{}},name);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00105}00105     query.exec();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00106}00106     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00107}00107     record = model-\/>record(0);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00108}00108     QString \textcolor{keywordtype}{id} = record.value(1).toString();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00109}00109     QSqlQuery query2(db);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00110}00110     query2.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Sales\_Record WHERE Membership\_Number=(:ID)"{}});\textcolor{comment}{//uses the fetched ID to check for purchases associated with it}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00111}00111     query2.bindValue(\textcolor{stringliteral}{"{}:ID"{}},\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00112}00112     query2.exec();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00113}00113     model-\/>setQuery(std::move(query2));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00115}00115     QSqlRecord totalSalesRecord;\textcolor{comment}{//this record will hold an individual user data row}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00116}00116     \textcolor{keywordtype}{int} totalSalesIterator = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00117}00117     \textcolor{keywordtype}{double} salesPrice;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00118}00118     \textcolor{keywordtype}{double} salesQuantity;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00119}00119     \textcolor{keywordtype}{double} runningTotal = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00120}00120     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00121}00121         totalSalesRecord = model-\/>record(totalSalesIterator); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00122}00122         salesPrice = totalSalesRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00123}00123         salesQuantity = totalSalesRecord.value(4).toDouble(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00124}00124         runningTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00125}00125         totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00126}00126     \}\textcolor{keywordflow}{while} (!totalSalesRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00127}00127     runningTotal += runningTotal * 0.0775;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00128}00128     QString finalTotal = finalTotal.number(runningTotal,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00129}00129     finalTotal.prepend(\textcolor{stringliteral}{"{}Total Purchases + tax: "{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00130}00130     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00131}00131     ui-\/>totalLabel-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00132}00132 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00134}00134 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00135}00135 \textcolor{keywordtype}{void} memberPurchases::on\_cancelButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00136}00136 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00137}00137     close();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00138}00138 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00139}00139 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00141}00141 \textcolor{keywordtype}{void} memberPurchases::on\_DisplayAllPushButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00142}00142 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00143}00143     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00144}00144 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00145}00145     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00148}00148     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00150}00150     QSqlQueryModel * model0 = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00151}00151    \textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00152}00152     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00153}00153     query.prepare(\textcolor{stringliteral}{"{}SELECT Membership\_Number, (SELECT Member\_Name from Members WHERE Members.Membership\_ID=Sales\_Record.Membership\_Number) as Member\_Name, SUM (sales\_price* quantity\_purchased * 1.0775) as Total\_Purchases FROM Sales\_Record GROUP BY Membership\_number ORDER BY Membership\_number"{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00155}00155     query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00156}00156 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00157}00157     model0-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00159}00159     ui-\/>tableView-\/>setModel(model0);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00161}00161     QSqlRecord totalMemberSalesRecord;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00162}00162     \textcolor{keywordtype}{int} totalSalesIterator1 = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00163}00163     \textcolor{keywordtype}{double} salesPrice1 = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00164}00164     \textcolor{comment}{//int salesQuantity1 = 0;}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00165}00165     \textcolor{keywordtype}{double} runningTotal1 = 0;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00166}00166 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00167}00167     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00168}00168             totalMemberSalesRecord = model0-\/>record(totalSalesIterator1); \textcolor{comment}{//sets record to the row of the iterator in the model}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00169}00169             salesPrice1 = totalMemberSalesRecord.value(1).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00170}00170             runningTotal1 += salesPrice1;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00171}00171             totalSalesIterator1++;}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00172}00172         \}\textcolor{keywordflow}{while} (!totalMemberSalesRecord.isNull(1));}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00173}00173 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00174}00174     QString finalTotal = finalTotal.number(runningTotal1,\textcolor{charliteral}{'f'},2);\textcolor{comment}{//sets a formatted total to a string that can be passed to the totalSalesNum label}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00175}00175     finalTotal.prepend(\textcolor{stringliteral}{"{}Total Purchases + tax: "{}});}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00176}00176     ui-\/>totalLabel-\/>setText(finalTotal);}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00177}00177 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00180}00180 \textcolor{keywordtype}{void} memberPurchases::on\_memberIDLineEdit\_returnPressed()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00181}00181 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00182}00182     memberPurchases::on\_idSearchButton\_clicked();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00183}00183 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00184}00184 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00186}00186 \textcolor{keywordtype}{void} memberPurchases::on\_memberNameLineEdit\_returnPressed()}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00187}00187 \{}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00188}00188     memberPurchases::on\_nameSearchButton\_clicked();}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00189}00189 \}}
+\DoxyCodeLine{\Hypertarget{memberpurchases_8cpp_source_l00190}00190 }
+
+\end{DoxyCode}

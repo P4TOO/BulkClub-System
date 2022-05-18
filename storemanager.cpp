@@ -14,7 +14,6 @@ StoreManager::~StoreManager()
     delete ui;
 }
 
-
 void StoreManager::on_sales_report_clicked()
 {
     SalesReportWindow = new SalesReport;
@@ -52,7 +51,6 @@ void StoreManager::on_new_purchase_clicked()
     purchaseWindow = new newPurchase;
     purchaseWindow->show();
 }
-
 
 
 void StoreManager::on_logout_clicked()

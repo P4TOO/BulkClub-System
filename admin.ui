@@ -36,6 +36,11 @@
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(241, 115, 0)</string>
     </property>
@@ -151,7 +156,7 @@
      <x>0</x>
      <y>0</y>
      <width>584</width>
-     <height>22</height>
+     <height>17</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">

@@ -22,7 +22,7 @@ memberPurchases::memberPurchases(QWidget *parent) :
     QSqlQueryModel * model0 = new QSqlQueryModel();
    //model is readonly access to query results
     QSqlQuery query(db);
-    query.prepare("SELECT Membership_number, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Inventory GROUP BY Membership_number ORDER BY Membership_number");
+    query.prepare("SELECT Membership_number, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Sales_Record GROUP BY Membership_number ORDER BY Membership_number");
 
     query.exec(); //query must be active before being moved into the model
 
@@ -62,7 +62,7 @@ void memberPurchases::on_idSearchButton_clicked()
     QString ID = ui->memberIDLineEdit->text();
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Inventory WHERE Membership_Number=(:ID)");
+    query.prepare("SELECT * FROM Sales_Record WHERE Membership_Number=(:ID)");
     query.bindValue(":ID",ID);
     query.exec();
 
@@ -106,7 +106,7 @@ void memberPurchases::on_nameSearchButton_clicked()
     record = model->record(0);
     QString id = record.value(1).toString();
     QSqlQuery query2(db);
-    query2.prepare("SELECT * FROM Inventory WHERE Membership_Number=(:ID)");//uses the fetched ID to check for purchases associated with it
+    query2.prepare("SELECT * FROM Sales_Record WHERE Membership_Number=(:ID)");//uses the fetched ID to check for purchases associated with it
     query2.bindValue(":ID",id);
     query2.exec();
     qDebug() << id;

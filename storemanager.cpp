@@ -65,3 +65,10 @@ void StoreManager::on_item_inventory_clicked()
     itemDisplayWindow = new itemDisplay;
     itemDisplayWindow->show();
 }
+
+void StoreManager::on_new_purchase_clicked()
+{
+    purchaseWindow = new newPurchase;
+    purchaseWindow->show();
+}
+

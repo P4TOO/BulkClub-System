@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>240</y>
+      <y>220</y>
       <width>181</width>
-      <height>51</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -42,9 +42,9 @@
     <property name="geometry">
      <rect>
       <x>280</x>
-      <y>300</y>
+      <y>260</y>
       <width>181</width>
-      <height>51</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -65,7 +65,7 @@
       <x>280</x>
       <y>180</y>
       <width>181</width>
-      <height>48</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -172,7 +172,7 @@
      <pixmap>../Misc 2/Downloads/output-onlinepngtools.png</pixmap>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -201,6 +201,28 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="new_purchase">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>300</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(162, 131, 255)</string>
+    </property>
+    <property name="text">
+     <string>New Purchase</string>
+    </property>
+   </widget>
+   <zorder>layoutWidget</zorder>
    <zorder>graphicsView_2</zorder>
    <zorder>member_rebates</zorder>
    <zorder>member_purchases</zorder>
@@ -208,9 +230,8 @@
    <zorder>item_inventory</zorder>
    <zorder>sales_report</zorder>
    <zorder>label</zorder>
-   <zorder>checkDatabaseConnection</zorder>
-   <zorder>exitButton</zorder>
    <zorder>label_2</zorder>
+   <zorder>new_purchase</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSales_Report">

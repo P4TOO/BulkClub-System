@@ -1,0 +1,382 @@
+\hypertarget{picosha2_8h_source}{}\doxysection{picosha2.\+h}
+\mbox{\hyperlink{picosha2_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00002}00002 \textcolor{comment}{The MIT License (MIT)}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00004}00004 \textcolor{comment}{Copyright (C) 2017 okdshin}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00005}00005 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00006}00006 \textcolor{comment}{Permission is hereby granted, free of charge, to any person obtaining a copy}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00007}00007 \textcolor{comment}{of this software and associated documentation files (the "{}Software"{}), to deal}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00008}00008 \textcolor{comment}{in the Software without restriction, including without limitation the rights}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00009}00009 \textcolor{comment}{to use, copy, modify, merge, publish, distribute, sublicense, and/or sell}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00010}00010 \textcolor{comment}{copies of the Software, and to permit persons to whom the Software is}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00011}00011 \textcolor{comment}{furnished to do so, subject to the following conditions:}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00012}00012 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00013}00013 \textcolor{comment}{The above copyright notice and this permission notice shall be included in}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00014}00014 \textcolor{comment}{all copies or substantial portions of the Software.}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00015}00015 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00016}00016 \textcolor{comment}{THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00017}00017 \textcolor{comment}{IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00018}00018 \textcolor{comment}{FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00019}00019 \textcolor{comment}{AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00020}00020 \textcolor{comment}{LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00021}00021 \textcolor{comment}{OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00022}00022 \textcolor{comment}{THE SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00023}00023 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00024}00024 \textcolor{preprocessor}{\#ifndef PICOSHA2\_H}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00025}00025 \textcolor{preprocessor}{\#define PICOSHA2\_H}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00026}00026 \textcolor{comment}{// picosha2:20140213}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00028}00028 \textcolor{preprocessor}{\#ifndef PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00029}\mbox{\hyperlink{picosha2_8h_a111a47b5eda216a1cc130ec492bf1f0a}{00029}} \textcolor{preprocessor}{\#define PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00030}00030 \textcolor{preprocessor}{    1048576  }\textcolor{comment}{//=1024*1024: default is 1MB memory}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00031}00031 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00033}00033 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00034}00034 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00035}00035 \textcolor{preprocessor}{\#include <iterator>}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00036}00036 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00037}00037 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00038}00038 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00039}\mbox{\hyperlink{namespacepicosha2}{00039}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacepicosha2}{picosha2}} \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00040}\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{00040}} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00041}\mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{00041}} \textcolor{keyword}{typedef} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00043}00043 \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} k\_digest\_size = 32;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00045}\mbox{\hyperlink{namespacepicosha2_1_1detail}{00045}} \textcolor{keyword}{namespace }detail \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00046}\mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{00046}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{mask\_8bit}}(\mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}} x) \{ \textcolor{keywordflow}{return} x \& 0xff; \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00048}\mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{00048}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{mask\_32bit}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x) \{ \textcolor{keywordflow}{return} x \& 0xffffffff; \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00050}\mbox{\hyperlink{namespacepicosha2_1_1detail_ad3cb0b9e363109b709fea56e7312e155}{00050}} \textcolor{keyword}{const} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_ad3cb0b9e363109b709fea56e7312e155}{add\_constant}}[64] = \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00051}00051     0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00052}00052     0x923f82a4, 0xab1c5ed5, 0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00053}00053     0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174, 0xe49b69c1, 0xefbe4786,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00054}00054     0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00055}00055     0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00056}00056     0x06ca6351, 0x14292967, 0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00057}00057     0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85, 0xa2bfe8a1, 0xa81a664b,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00058}00058     0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00059}00059     0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00060}00060     0x5b9cca4f, 0x682e6ff3, 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00061}00061     0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2\};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00063}\mbox{\hyperlink{namespacepicosha2_1_1detail_aeaea507d81fb16cbefcb62f74642209e}{00063}} \textcolor{keyword}{const} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_aeaea507d81fb16cbefcb62f74642209e}{initial\_message\_digest}}[8] = \{0x6a09e667, 0xbb67ae85, 0x3c6ef372,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00064}00064                                           0xa54ff53a, 0x510e527f, 0x9b05688c,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00065}00065                                           0x1f83d9ab, 0x5be0cd19\};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00066}00066 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00067}\mbox{\hyperlink{namespacepicosha2_1_1detail_a9393d96347802be5014731b3ed5b3924}{00067}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9393d96347802be5014731b3ed5b3924}{ch}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x, \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} y, \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} z) \{ \textcolor{keywordflow}{return} (x \& y) \string^ ((\string~x) \& z); \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00069}\mbox{\hyperlink{namespacepicosha2_1_1detail_a597a3a863a9816a2ac30e1201cb50eb6}{00069}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a597a3a863a9816a2ac30e1201cb50eb6}{maj}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x, \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} y, \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} z) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00070}00070     \textcolor{keywordflow}{return} (x \& y) \string^ (x \& z) \string^ (y \& z);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00071}00071 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00073}\mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{00073}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x, std::size\_t n) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00074}00074     assert(n < 32);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00075}00075     \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{mask\_32bit}}((x >> n) | (x << (32 -\/ n)));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00076}00076 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00078}\mbox{\hyperlink{namespacepicosha2_1_1detail_a74dd6806e3029d59f80fcab50c2ccb04}{00078}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a74dd6806e3029d59f80fcab50c2ccb04}{bsig0}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 2) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 13) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 22); \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00080}\mbox{\hyperlink{namespacepicosha2_1_1detail_a9deb9ad6e5aafdfb8ed4332104380a1f}{00080}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9deb9ad6e5aafdfb8ed4332104380a1f}{bsig1}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 6) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 11) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 25); \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00082}\mbox{\hyperlink{namespacepicosha2_1_1detail_ab7cdc77964844036e5674001b8a0c221}{00082}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_ab7cdc77964844036e5674001b8a0c221}{shr}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x, std::size\_t n) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00083}00083     assert(n < 32);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00084}00084     \textcolor{keywordflow}{return} x >> n;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00085}00085 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00087}\mbox{\hyperlink{namespacepicosha2_1_1detail_a45e6bee0035d6f883fdfc55420b22c61}{00087}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a45e6bee0035d6f883fdfc55420b22c61}{ssig0}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 7) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 18) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_ab7cdc77964844036e5674001b8a0c221}{shr}}(x, 3); \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00089}\mbox{\hyperlink{namespacepicosha2_1_1detail_a883d6f99480925706655984ab40c73f1}{00089}} \textcolor{keyword}{inline} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} \mbox{\hyperlink{namespacepicosha2_1_1detail_a883d6f99480925706655984ab40c73f1}{ssig1}}(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} x) \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 17) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{rotr}}(x, 19) \string^ \mbox{\hyperlink{namespacepicosha2_1_1detail_ab7cdc77964844036e5674001b8a0c221}{shr}}(x, 10); \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00091}00091 \textcolor{keyword}{template} <\textcolor{keyword}{typename} RaIter1, \textcolor{keyword}{typename} RaIter2>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00092}\mbox{\hyperlink{namespacepicosha2_1_1detail_a0f8ec18182f29345d4d181be2deab6ee}{00092}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_1_1detail_a0f8ec18182f29345d4d181be2deab6ee}{hash256\_block}}(RaIter1 message\_digest, RaIter2 first, RaIter2 last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00093}00093     assert(first + 64 == last);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00094}00094     \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{void}\textcolor{keyword}{>}(last);  \textcolor{comment}{// for avoiding unused-\/variable warning}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00095}00095     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} w[64];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00096}00096     std::fill(w, w + 64, \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}(0));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00097}00097     \textcolor{keywordflow}{for} (std::size\_t i = 0; i < 16; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00098}00098         w[i] = (\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{mask\_8bit}}(*(first + i * 4))) << 24) |}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00099}00099                (\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{mask\_8bit}}(*(first + i * 4 + 1))) << 16) |}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00100}00100                (\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{mask\_8bit}}(*(first + i * 4 + 2))) << 8) |}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00101}00101                (\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}\textcolor{keyword}{>}(\mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{mask\_8bit}}(*(first + i * 4 + 3))));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00102}00102     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00103}00103     \textcolor{keywordflow}{for} (std::size\_t i = 16; i < 64; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00104}00104         w[i] = \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{mask\_32bit}}(\mbox{\hyperlink{namespacepicosha2_1_1detail_a883d6f99480925706655984ab40c73f1}{ssig1}}(w[i -\/ 2]) + w[i -\/ 7] + \mbox{\hyperlink{namespacepicosha2_1_1detail_a45e6bee0035d6f883fdfc55420b22c61}{ssig0}}(w[i -\/ 15]) +}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00105}00105                           w[i -\/ 16]);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00106}00106     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00108}00108     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} a = *message\_digest;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00109}00109     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} b = *(message\_digest + 1);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00110}00110     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} c = *(message\_digest + 2);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00111}00111     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} d = *(message\_digest + 3);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00112}00112     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} e = *(message\_digest + 4);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00113}00113     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} f = *(message\_digest + 5);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00114}00114     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} g = *(message\_digest + 6);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00115}00115     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} h = *(message\_digest + 7);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00117}00117     \textcolor{keywordflow}{for} (std::size\_t i = 0; i < 64; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00118}00118         \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} temp1 = h + \mbox{\hyperlink{namespacepicosha2_1_1detail_a9deb9ad6e5aafdfb8ed4332104380a1f}{bsig1}}(e) + \mbox{\hyperlink{namespacepicosha2_1_1detail_a9393d96347802be5014731b3ed5b3924}{ch}}(e, f, g) + \mbox{\hyperlink{namespacepicosha2_1_1detail_ad3cb0b9e363109b709fea56e7312e155}{add\_constant}}[i] + w[i];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00119}00119         \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} temp2 = \mbox{\hyperlink{namespacepicosha2_1_1detail_a74dd6806e3029d59f80fcab50c2ccb04}{bsig0}}(a) + \mbox{\hyperlink{namespacepicosha2_1_1detail_a597a3a863a9816a2ac30e1201cb50eb6}{maj}}(a, b, c);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00120}00120         h = g;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00121}00121         g = f;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00122}00122         f = e;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00123}00123         e = \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{mask\_32bit}}(d + temp1);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00124}00124         d = c;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00125}00125         c = b;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00126}00126         b = a;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00127}00127         a = \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{mask\_32bit}}(temp1 + temp2);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00129}00129     *message\_digest += a;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00130}00130     *(message\_digest + 1) += b;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00131}00131     *(message\_digest + 2) += c;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00132}00132     *(message\_digest + 3) += d;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00133}00133     *(message\_digest + 4) += e;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00134}00134     *(message\_digest + 5) += f;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00135}00135     *(message\_digest + 6) += g;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00136}00136     *(message\_digest + 7) += h;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00137}00137     \textcolor{keywordflow}{for} (std::size\_t i = 0; i < 8; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00138}00138         *(message\_digest + i) = \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{mask\_32bit}}(*(message\_digest + i));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00139}00139     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00140}00140 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00142}00142 \}  \textcolor{comment}{// namespace detail}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00144}00144 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00145}\mbox{\hyperlink{namespacepicosha2_ac4b05acac79271ad966e913137cea6b2}{00145}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_ac4b05acac79271ad966e913137cea6b2}{output\_hex}}(InIter first, InIter last, std::ostream\& os) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00146}00146     os.setf(std::ios::hex, std::ios::basefield);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00147}00147     \textcolor{keywordflow}{while} (first != last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00148}00148         os.width(2);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00149}00149         os.fill(\textcolor{charliteral}{'0'});}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00150}00150         os << static\_cast<unsigned int>(*first);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00151}00151         ++first;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00152}00152     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00153}00153     os.setf(std::ios::dec, std::ios::basefield);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00154}00154 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00156}00156 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00157}\mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{00157}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(InIter first, InIter last, std::string\& hex\_str) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00158}00158     std::ostringstream oss;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00159}00159     \mbox{\hyperlink{namespacepicosha2_ac4b05acac79271ad966e913137cea6b2}{output\_hex}}(first, last, oss);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00160}00160     hex\_str.assign(oss.str());}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00161}00161 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00163}00163 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InContainer>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00164}\mbox{\hyperlink{namespacepicosha2_a842ed9f18c3424fab2fa7c0c7eb1f11a}{00164}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(\textcolor{keyword}{const} InContainer\& bytes, std::string\& hex\_str) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00165}00165     \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(bytes.begin(), bytes.end(), hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00166}00166 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00168}00168 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00169}\mbox{\hyperlink{namespacepicosha2_afb66f924bd509990fc8dcf28e758a080}{00169}} std::string \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(InIter first, InIter last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00170}00170     std::string hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00171}00171     \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(first, last, hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00172}00172     \textcolor{keywordflow}{return} hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00173}00173 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00174}00174 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00175}00175 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InContainer>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00176}\mbox{\hyperlink{namespacepicosha2_aceee85285a1ea6b2ddac40c062a139ba}{00176}} std::string \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(\textcolor{keyword}{const} InContainer\& bytes) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00177}00177     std::string hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00178}00178     \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(bytes, hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00179}00179     \textcolor{keywordflow}{return} hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00180}00180 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00182}\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{00182}} \textcolor{keyword}{class }\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{hash256\_one\_by\_one}} \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00183}00183    \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00184}\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_af50d62a78042ecc4bef792e0ed7187e1}{00184}}     \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_af50d62a78042ecc4bef792e0ed7187e1}{hash256\_one\_by\_one}}() \{ \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a9308a2f22f9d0afbd315c9cf45458819}{init}}(); \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00186}\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a9308a2f22f9d0afbd315c9cf45458819}{00186}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a9308a2f22f9d0afbd315c9cf45458819}{init}}() \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00187}00187         buffer\_.clear();}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00188}00188         std::fill(data\_length\_digits\_, data\_length\_digits\_ + 4, \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}(0));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00189}00189         std::copy(\mbox{\hyperlink{namespacepicosha2_1_1detail_aeaea507d81fb16cbefcb62f74642209e}{detail::initial\_message\_digest}},}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00190}00190                   \mbox{\hyperlink{namespacepicosha2_1_1detail_aeaea507d81fb16cbefcb62f74642209e}{detail::initial\_message\_digest}} + 8, h\_);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00191}00191     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00193}00193     \textcolor{keyword}{template} <\textcolor{keyword}{typename} RaIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00194}\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a2ce5fc541a7c27a935eecb85b9dd6497}{00194}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a2ce5fc541a7c27a935eecb85b9dd6497}{process}}(RaIter first, RaIter last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00195}00195         add\_to\_data\_length(\textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}\textcolor{keyword}{>}(std::distance(first, last)));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00196}00196         std::copy(first, last, std::back\_inserter(buffer\_));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00197}00197         std::size\_t i = 0;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00198}00198         \textcolor{keywordflow}{for} (; i + 64 <= buffer\_.size(); i += 64) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00199}00199             \mbox{\hyperlink{namespacepicosha2_1_1detail_a0f8ec18182f29345d4d181be2deab6ee}{detail::hash256\_block}}(h\_, buffer\_.begin() + i,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00200}00200                                   buffer\_.begin() + i + 64);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00201}00201         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00202}00202         buffer\_.erase(buffer\_.begin(), buffer\_.begin() + i);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00203}00203     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00204}00204 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00205}\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a1c2c4d24deccb590cbbd30ffeb317690}{00205}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a1c2c4d24deccb590cbbd30ffeb317690}{finish}}() \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00206}00206         \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}} temp[64];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00207}00207         std::fill(temp, temp + 64, \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}(0));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00208}00208         std::size\_t remains = buffer\_.size();}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00209}00209         std::copy(buffer\_.begin(), buffer\_.end(), temp);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00210}00210         temp[remains] = 0x80;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00212}00212         \textcolor{keywordflow}{if} (remains > 55) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00213}00213             std::fill(temp + remains + 1, temp + 64, \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}(0));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00214}00214             \mbox{\hyperlink{namespacepicosha2_1_1detail_a0f8ec18182f29345d4d181be2deab6ee}{detail::hash256\_block}}(h\_, temp, temp + 64);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00215}00215             std::fill(temp, temp + 64 -\/ 4, \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}(0));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00216}00216         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00217}00217             std::fill(temp + remains + 1, temp + 64 -\/ 4, \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}(0));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00218}00218         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00219}00219 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00220}00220         write\_data\_bit\_length(\&(temp[56]));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00221}00221         \mbox{\hyperlink{namespacepicosha2_1_1detail_a0f8ec18182f29345d4d181be2deab6ee}{detail::hash256\_block}}(h\_, temp, temp + 64);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00222}00222     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00223}00223 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00224}00224     \textcolor{keyword}{template} <\textcolor{keyword}{typename} OutIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00225}\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a3f9ac7afd9396f70f779cf7f99bfa4d9}{00225}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a3f9ac7afd9396f70f779cf7f99bfa4d9}{get\_hash\_bytes}}(OutIter first, OutIter last)\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00226}00226         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}}* iter = h\_; iter != h\_ + 8; ++iter) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00227}00227             \textcolor{keywordflow}{for} (std::size\_t i = 0; i < 4 \&\& first != last; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00228}00228                 *(first++) = \mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{detail::mask\_8bit}}(}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00229}00229                     \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}\textcolor{keyword}{>}((*iter >> (24 -\/ 8 * i))));}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00230}00230             \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00231}00231         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00232}00232     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00234}00234    \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00235}00235     \textcolor{keywordtype}{void} add\_to\_data\_length(\mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} n) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00236}00236         \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} carry = 0;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00237}00237         data\_length\_digits\_[0] += n;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00238}00238         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < 4; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00239}00239             data\_length\_digits\_[i] += carry;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00240}00240             \textcolor{keywordflow}{if} (data\_length\_digits\_[i] >= 65536u) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00241}00241                 carry = data\_length\_digits\_[i] >> 16;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00242}00242                 data\_length\_digits\_[i] \&= 65535u;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00243}00243             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00244}00244                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00245}00245             \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00246}00246         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00247}00247     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00248}00248     \textcolor{keywordtype}{void} write\_data\_bit\_length(\mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}* begin) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00249}00249         \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} data\_bit\_length\_digits[4];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00250}00250         std::copy(data\_length\_digits\_, data\_length\_digits\_ + 4,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00251}00251                   data\_bit\_length\_digits);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00252}00252 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00253}00253         \textcolor{comment}{// convert byte length to bit length (multiply 8 or shift 3 times left)}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00254}00254         \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} carry = 0;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00255}00255         \textcolor{keywordflow}{for} (std::size\_t i = 0; i < 4; ++i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00256}00256             \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} before\_val = data\_bit\_length\_digits[i];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00257}00257             data\_bit\_length\_digits[i] <<= 3;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00258}00258             data\_bit\_length\_digits[i] |= carry;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00259}00259             data\_bit\_length\_digits[i] \&= 65535u;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00260}00260             carry = (before\_val >> (16 -\/ 3)) \& 65535u;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00261}00261         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00262}00262 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00263}00263         \textcolor{comment}{// write data\_bit\_length}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00264}00264         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 3; i >= 0; -\/-\/i) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00265}00265             (*begin++) = \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}\textcolor{keyword}{>}(data\_bit\_length\_digits[i] >> 8);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00266}00266             (*begin++) = \textcolor{keyword}{static\_cast<}\mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}}\textcolor{keyword}{>}(data\_bit\_length\_digits[i]);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00267}00267         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00268}00268     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00269}00269     std::vector<byte\_t> buffer\_;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00270}00270     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} data\_length\_digits\_[4];  \textcolor{comment}{// as 64bit integer (16bit x 4 integer)}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00271}00271     \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{word\_t}} h\_[8];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00272}00272 \};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00273}00273 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00274}\mbox{\hyperlink{namespacepicosha2_a3c44bb955a51ee45d9f7e46b53a508fb}{00274}} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a3c44bb955a51ee45d9f7e46b53a508fb}{get\_hash\_hex\_string}}(\textcolor{keyword}{const} \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{hash256\_one\_by\_one}}\& hasher,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00275}00275                                 std::string\& hex\_str) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00276}00276     \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}} hash[k\_digest\_size];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00277}00277     hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a3f9ac7afd9396f70f779cf7f99bfa4d9}{get\_hash\_bytes}}(hash, hash + k\_digest\_size);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00278}00278     \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{bytes\_to\_hex\_string}}(hash, hash + k\_digest\_size, hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00279}00279 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00280}00280 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00281}\mbox{\hyperlink{namespacepicosha2_a5a63ab6fdca093a26972f0e58fcbbd26}{00281}} \textcolor{keyword}{inline} std::string \mbox{\hyperlink{namespacepicosha2_a3c44bb955a51ee45d9f7e46b53a508fb}{get\_hash\_hex\_string}}(\textcolor{keyword}{const} \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{hash256\_one\_by\_one}}\& hasher) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00282}00282     std::string hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00283}00283     \mbox{\hyperlink{namespacepicosha2_a3c44bb955a51ee45d9f7e46b53a508fb}{get\_hash\_hex\_string}}(hasher, hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00284}00284     \textcolor{keywordflow}{return} hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00285}00285 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00286}00286 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00287}\mbox{\hyperlink{namespacepicosha2_1_1impl}{00287}} \textcolor{keyword}{namespace }impl \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00288}00288 \textcolor{keyword}{template} <\textcolor{keyword}{typename} RaIter, \textcolor{keyword}{typename} OutIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00289}\mbox{\hyperlink{namespacepicosha2_1_1impl_af23344b24e2b164af383d79b3817213e}{00289}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_1_1impl_af23344b24e2b164af383d79b3817213e}{hash256\_impl}}(RaIter first, RaIter last, OutIter first2, OutIter last2, \textcolor{keywordtype}{int},}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00290}00290                   std::random\_access\_iterator\_tag) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00291}00291     \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{hash256\_one\_by\_one}} hasher;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00292}00292     \textcolor{comment}{// hasher.init();}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00293}00293     hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a2ce5fc541a7c27a935eecb85b9dd6497}{process}}(first, last);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00294}00294     hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a1c2c4d24deccb590cbbd30ffeb317690}{finish}}();}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00295}00295     hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a3f9ac7afd9396f70f779cf7f99bfa4d9}{get\_hash\_bytes}}(first2, last2);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00296}00296 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00298}00298 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InputIter, \textcolor{keyword}{typename} OutIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00299}\mbox{\hyperlink{namespacepicosha2_1_1impl_ab3e61207762391e93a108ae82b3b596c}{00299}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_1_1impl_af23344b24e2b164af383d79b3817213e}{hash256\_impl}}(InputIter first, InputIter last, OutIter first2,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00300}00300                   OutIter last2, \textcolor{keywordtype}{int} buffer\_size, std::input\_iterator\_tag) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00301}00301     std::vector<byte\_t> buffer(buffer\_size);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00302}00302     \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{hash256\_one\_by\_one}} hasher;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00303}00303     \textcolor{comment}{// hasher.init();}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00304}00304     \textcolor{keywordflow}{while} (first != last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00305}00305         \textcolor{keywordtype}{int} size = buffer\_size;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00306}00306         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i != buffer\_size; ++i, ++first) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00307}00307             \textcolor{keywordflow}{if} (first == last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00308}00308                 size = i;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00309}00309                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00310}00310             \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00311}00311             buffer[i] = *first;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00312}00312         \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00313}00313         hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a2ce5fc541a7c27a935eecb85b9dd6497}{process}}(buffer.begin(), buffer.begin() + size);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00314}00314     \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00315}00315     hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a1c2c4d24deccb590cbbd30ffeb317690}{finish}}();}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00316}00316     hasher.\mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one_a3f9ac7afd9396f70f779cf7f99bfa4d9}{get\_hash\_bytes}}(first2, last2);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00317}00317 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00318}00318 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00319}00319 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00320}00320 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter, \textcolor{keyword}{typename} OutIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00321}\mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{00321}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(InIter first, InIter last, OutIter first2, OutIter last2,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00322}00322              \textcolor{keywordtype}{int} buffer\_size = \mbox{\hyperlink{picosha2_8h_a111a47b5eda216a1cc130ec492bf1f0a}{PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR}}) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00323}00323     \mbox{\hyperlink{namespacepicosha2_1_1impl_af23344b24e2b164af383d79b3817213e}{picosha2::impl::hash256\_impl}}(}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00324}00324         first, last, first2, last2, buffer\_size,}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00325}00325         \textcolor{keyword}{typename} std::iterator\_traits<InIter>::iterator\_category());}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00326}00326 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00327}00327 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00328}00328 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter, \textcolor{keyword}{typename} OutContainer>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00329}\mbox{\hyperlink{namespacepicosha2_a00cef1eb98cbecf9296f19b03eaacc45}{00329}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(InIter first, InIter last, OutContainer\& dst) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00330}00330     \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(first, last, dst.begin(), dst.end());}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00331}00331 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00332}00332 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00333}00333 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InContainer, \textcolor{keyword}{typename} OutIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00334}\mbox{\hyperlink{namespacepicosha2_a9b4fc95782fdccfe8265cc12940a6c15}{00334}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(\textcolor{keyword}{const} InContainer\& src, OutIter first, OutIter last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00335}00335     \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(src.begin(), src.end(), first, last);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00336}00336 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00337}00337 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00338}00338 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InContainer, \textcolor{keyword}{typename} OutContainer>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00339}\mbox{\hyperlink{namespacepicosha2_a83ae611dcb9559fe4162f9698b77bfac}{00339}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(\textcolor{keyword}{const} InContainer\& src, OutContainer\& dst) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00340}00340     \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(src.begin(), src.end(), dst.begin(), dst.end());}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00341}00341 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00342}00342 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00343}00343 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00344}\mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{00344}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(InIter first, InIter last, std::string\& hex\_str) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00345}00345     \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{byte\_t}} hashed[k\_digest\_size];}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00346}00346     \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(first, last, hashed, hashed + k\_digest\_size);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00347}00347     std::ostringstream oss;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00348}00348     \mbox{\hyperlink{namespacepicosha2_ac4b05acac79271ad966e913137cea6b2}{output\_hex}}(hashed, hashed + k\_digest\_size, oss);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00349}00349     hex\_str.assign(oss.str());}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00350}00350 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00351}00351 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00352}00352 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InIter>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00353}\mbox{\hyperlink{namespacepicosha2_a1f2b77df9215b7d4b095a4370b86a7e2}{00353}} std::string \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(InIter first, InIter last) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00354}00354     std::string hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00355}00355     \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(first, last, hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00356}00356     \textcolor{keywordflow}{return} hex\_str;}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00357}00357 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00358}00358 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00359}\mbox{\hyperlink{namespacepicosha2_a0f3830d43e1f61b20a639bd93b2edb6a}{00359}} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(\textcolor{keyword}{const} std::string\& src, std::string\& hex\_str) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00360}00360     \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(src.begin(), src.end(), hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00361}00361 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00362}00362 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00363}00363 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InContainer>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00364}\mbox{\hyperlink{namespacepicosha2_a42d761522a416bf533b951433f4d68de}{00364}} \textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(\textcolor{keyword}{const} InContainer\& src, std::string\& hex\_str) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00365}00365     \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(src.begin(), src.end(), hex\_str);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00366}00366 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00367}00367 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00368}00368 \textcolor{keyword}{template} <\textcolor{keyword}{typename} InContainer>}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00369}\mbox{\hyperlink{namespacepicosha2_afe081b5ad4bbf1f10d0b5f8ba5970fa7}{00369}} std::string \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(\textcolor{keyword}{const} InContainer\& src) \{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00370}00370     \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{hash256\_hex\_string}}(src.begin(), src.end());}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00371}00371 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00372}\mbox{\hyperlink{namespacepicosha2_af858b1da2286ad05c73945ebeb70b573}{00372}} \textcolor{keyword}{template}<\textcolor{keyword}{typename} OutIter>\textcolor{keywordtype}{void} \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(std::ifstream\& f, OutIter first, OutIter last)\{}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00373}00373     \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{hash256}}(std::istreambuf\_iterator<char>(f), std::istreambuf\_iterator<char>(), first,last);}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00374}00374 }
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00375}00375 \}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00376}00376 \}\textcolor{comment}{// namespace picosha2}}
+\DoxyCodeLine{\Hypertarget{picosha2_8h_source_l00377}00377 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// PICOSHA2\_H}}
+
+\end{DoxyCode}

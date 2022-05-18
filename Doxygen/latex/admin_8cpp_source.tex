@@ -1,0 +1,80 @@
+\hypertarget{admin_8cpp_source}{}\doxysection{admin.\+cpp}
+\mbox{\hyperlink{admin_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{admin_8h}{admin.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_admin.h"{}}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QMessageBox>}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{salesreport_8h}{salesreport.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{managemembers_8h}{managemembers.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{memberpurchases_8h}{memberpurchases.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00007}\mbox{\hyperlink{class_admin_a94351bd345ea0e3155d8ab691d424d35}{00007}} \mbox{\hyperlink{class_admin_a94351bd345ea0e3155d8ab691d424d35}{Admin::Admin}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00008}00008     QMainWindow(parent),}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00009}00009     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{class_admin}{Admin}})}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00010}00010 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00011}00011     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00012}00012 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00014}\mbox{\hyperlink{class_admin_a8fb5fe72fb4e05d50980c13cdf3b779c}{00014}} \mbox{\hyperlink{class_admin_a8fb5fe72fb4e05d50980c13cdf3b779c}{Admin::\string~Admin}}()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00016}00016     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00017}00017 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00019}00019 \textcolor{keywordtype}{void} Admin::on\_pushButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00020}00020 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00021}00021     QSqlDatabase db=QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00022}00022     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/mitch/BulkClub-\/System/BulkClubProject.db"{}});}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00024}00024     \textcolor{keywordflow}{if}(!db.open())}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00025}00025     \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00026}00026         QMessageBox::information(\textcolor{keyword}{this}, \textcolor{stringliteral}{"{}Not Connected"{}}, \textcolor{stringliteral}{"{}Database is not connected"{}});}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00027}00027     \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00028}00028     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00029}00029     \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00030}00030         QMessageBox::information(\textcolor{keyword}{this}, \textcolor{stringliteral}{"{}Connected"{}}, \textcolor{stringliteral}{"{}Database connected successfully"{}});}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00031}00031     \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00034}00034 \textcolor{keywordtype}{void} Admin::on\_actionSales\_Report\_triggered()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00036}00036     SalesReportWindow = \textcolor{keyword}{new} \mbox{\hyperlink{class_sales_report}{SalesReport}};}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00037}00037     SalesReportWindow-\/>show();}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00038}00038 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00042}00042 \textcolor{keywordtype}{void} Admin::on\_manageMembersPushButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00043}00043 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00044}00044     ManageMembersWindow = \textcolor{keyword}{new} \mbox{\hyperlink{classmanagemembers}{managemembers}};}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00045}00045     ManageMembersWindow-\/>show();}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00049}00049 \textcolor{keywordtype}{void} Admin::on\_memberUpgrade\_clicked()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00050}00050 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00051}00051     MemberUpgradeWindow = \textcolor{keyword}{new} \mbox{\hyperlink{classmemberupgrade}{memberupgrade}};}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00052}00052     MemberUpgradeWindow-\/>show();}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00053}00053 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00057}00057 \textcolor{keywordtype}{void} Admin::on\_exitButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00058}00058 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00059}00059     this-\/>close();}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00061}00061 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00064}00064 \textcolor{keywordtype}{void} Admin::on\_ManageInventoryPushbutton\_clicked()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00065}00065 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00066}00066     inventoryEditWindow = \textcolor{keyword}{new} \mbox{\hyperlink{class_manage_inventory}{ManageInventory}};}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00067}00067     inventoryEditWindow-\/>show();}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00068}00068 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00071}00071 \textcolor{keywordtype}{void} Admin::on\_actionSave\_triggered()}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00072}00072 \{}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00073}00073     QMessageBox::information(\textcolor{keyword}{this}, \textcolor{stringliteral}{"{}Save"{}}, \textcolor{stringliteral}{"{}Success, all changes saved"{}});}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00074}00074 \}}
+\DoxyCodeLine{\Hypertarget{admin_8cpp_source_l00075}00075 }
+
+\end{DoxyCode}

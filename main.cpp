@@ -1,4 +1,4 @@
-#include "storemanagerwindow.h"
+#include "storemanager.h"
 #include "logindialog.h"
 
 #include <QApplication>

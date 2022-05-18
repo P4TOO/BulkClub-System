@@ -1,0 +1,117 @@
+\hypertarget{picosha2_8h}{}\doxysection{picosha2.\+h File Reference}
+\label{picosha2_8h}\index{picosha2.h@{picosha2.h}}
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cassert$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classpicosha2_1_1hash256__one__by__one}{picosha2\+::hash256\+\_\+one\+\_\+by\+\_\+one}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespacepicosha2}{picosha2}}
+\item 
+namespace \mbox{\hyperlink{namespacepicosha2_1_1detail}{picosha2\+::detail}}
+\item 
+namespace \mbox{\hyperlink{namespacepicosha2_1_1impl}{picosha2\+::impl}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{picosha2_8h_a111a47b5eda216a1cc130ec492bf1f0a}{PICOSHA2\+\_\+\+BUFFER\+\_\+\+SIZE\+\_\+\+FOR\+\_\+\+INPUT\+\_\+\+ITERATOR}}~    1048576
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned long \mbox{\hyperlink{namespacepicosha2_a574b3f94c2eb22c3048c763e797aaf94}{picosha2\+::word\+\_\+t}}
+\item 
+typedef unsigned char \mbox{\hyperlink{namespacepicosha2_a4c8534bbc0ed589734397b237e4a9f87}{picosha2\+::byte\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+byte\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a32c75791b8265419c80b9b165d7b392f}{picosha2\+::detail\+::mask\+\_\+8bit}} (byte\+\_\+t x)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_ad089a7e1a946d7d4c737dff4530c1ff7}{picosha2\+::detail\+::mask\+\_\+32bit}} (word\+\_\+t x)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a9393d96347802be5014731b3ed5b3924}{picosha2\+::detail\+::ch}} (word\+\_\+t x, word\+\_\+t y, word\+\_\+t z)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a597a3a863a9816a2ac30e1201cb50eb6}{picosha2\+::detail\+::maj}} (word\+\_\+t x, word\+\_\+t y, word\+\_\+t z)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a9b56e01c2c5dae6b00ea9bf9f3cbefcc}{picosha2\+::detail\+::rotr}} (word\+\_\+t x, std\+::size\+\_\+t n)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a74dd6806e3029d59f80fcab50c2ccb04}{picosha2\+::detail\+::bsig0}} (word\+\_\+t x)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a9deb9ad6e5aafdfb8ed4332104380a1f}{picosha2\+::detail\+::bsig1}} (word\+\_\+t x)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_ab7cdc77964844036e5674001b8a0c221}{picosha2\+::detail\+::shr}} (word\+\_\+t x, std\+::size\+\_\+t n)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a45e6bee0035d6f883fdfc55420b22c61}{picosha2\+::detail\+::ssig0}} (word\+\_\+t x)
+\item 
+word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_a883d6f99480925706655984ab40c73f1}{picosha2\+::detail\+::ssig1}} (word\+\_\+t x)
+\item 
+{\footnotesize template$<$typename Ra\+Iter1 , typename Ra\+Iter2 $>$ }\\void \mbox{\hyperlink{namespacepicosha2_1_1detail_a0f8ec18182f29345d4d181be2deab6ee}{picosha2\+::detail\+::hash256\+\_\+block}} (Ra\+Iter1 message\+\_\+digest, Ra\+Iter2 first, Ra\+Iter2 last)
+\item 
+{\footnotesize template$<$typename In\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_ac4b05acac79271ad966e913137cea6b2}{picosha2\+::output\+\_\+hex}} (In\+Iter first, In\+Iter last, std\+::ostream \&os)
+\item 
+{\footnotesize template$<$typename In\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{picosha2\+::bytes\+\_\+to\+\_\+hex\+\_\+string}} (In\+Iter first, In\+Iter last, std\+::string \&hex\+\_\+str)
+\item 
+{\footnotesize template$<$typename In\+Container $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a842ed9f18c3424fab2fa7c0c7eb1f11a}{picosha2\+::bytes\+\_\+to\+\_\+hex\+\_\+string}} (const In\+Container \&bytes, std\+::string \&hex\+\_\+str)
+\item 
+{\footnotesize template$<$typename In\+Iter $>$ }\\std\+::string \mbox{\hyperlink{namespacepicosha2_afb66f924bd509990fc8dcf28e758a080}{picosha2\+::bytes\+\_\+to\+\_\+hex\+\_\+string}} (In\+Iter first, In\+Iter last)
+\item 
+{\footnotesize template$<$typename In\+Container $>$ }\\std\+::string \mbox{\hyperlink{namespacepicosha2_aceee85285a1ea6b2ddac40c062a139ba}{picosha2\+::bytes\+\_\+to\+\_\+hex\+\_\+string}} (const In\+Container \&bytes)
+\item 
+void \mbox{\hyperlink{namespacepicosha2_a3c44bb955a51ee45d9f7e46b53a508fb}{picosha2\+::get\+\_\+hash\+\_\+hex\+\_\+string}} (const hash256\+\_\+one\+\_\+by\+\_\+one \&hasher, std\+::string \&hex\+\_\+str)
+\item 
+std\+::string \mbox{\hyperlink{namespacepicosha2_a5a63ab6fdca093a26972f0e58fcbbd26}{picosha2\+::get\+\_\+hash\+\_\+hex\+\_\+string}} (const hash256\+\_\+one\+\_\+by\+\_\+one \&hasher)
+\item 
+{\footnotesize template$<$typename Ra\+Iter , typename Out\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_1_1impl_af23344b24e2b164af383d79b3817213e}{picosha2\+::impl\+::hash256\+\_\+impl}} (Ra\+Iter first, Ra\+Iter last, Out\+Iter first2, Out\+Iter last2, int, std\+::random\+\_\+access\+\_\+iterator\+\_\+tag)
+\item 
+{\footnotesize template$<$typename Input\+Iter , typename Out\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_1_1impl_ab3e61207762391e93a108ae82b3b596c}{picosha2\+::impl\+::hash256\+\_\+impl}} (Input\+Iter first, Input\+Iter last, Out\+Iter first2, Out\+Iter last2, int buffer\+\_\+size, std\+::input\+\_\+iterator\+\_\+tag)
+\item 
+{\footnotesize template$<$typename In\+Iter , typename Out\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{picosha2\+::hash256}} (In\+Iter first, In\+Iter last, Out\+Iter first2, Out\+Iter last2, int buffer\+\_\+size=\mbox{\hyperlink{picosha2_8h_a111a47b5eda216a1cc130ec492bf1f0a}{PICOSHA2\+\_\+\+BUFFER\+\_\+\+SIZE\+\_\+\+FOR\+\_\+\+INPUT\+\_\+\+ITERATOR}})
+\item 
+{\footnotesize template$<$typename In\+Iter , typename Out\+Container $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a00cef1eb98cbecf9296f19b03eaacc45}{picosha2\+::hash256}} (In\+Iter first, In\+Iter last, Out\+Container \&dst)
+\item 
+{\footnotesize template$<$typename In\+Container , typename Out\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a9b4fc95782fdccfe8265cc12940a6c15}{picosha2\+::hash256}} (const In\+Container \&src, Out\+Iter first, Out\+Iter last)
+\item 
+{\footnotesize template$<$typename In\+Container , typename Out\+Container $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a83ae611dcb9559fe4162f9698b77bfac}{picosha2\+::hash256}} (const In\+Container \&src, Out\+Container \&dst)
+\item 
+{\footnotesize template$<$typename In\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a77273c3b341149dc3417bba699888302}{picosha2\+::hash256\+\_\+hex\+\_\+string}} (In\+Iter first, In\+Iter last, std\+::string \&hex\+\_\+str)
+\item 
+{\footnotesize template$<$typename In\+Iter $>$ }\\std\+::string \mbox{\hyperlink{namespacepicosha2_a1f2b77df9215b7d4b095a4370b86a7e2}{picosha2\+::hash256\+\_\+hex\+\_\+string}} (In\+Iter first, In\+Iter last)
+\item 
+void \mbox{\hyperlink{namespacepicosha2_a0f3830d43e1f61b20a639bd93b2edb6a}{picosha2\+::hash256\+\_\+hex\+\_\+string}} (const std\+::string \&src, std\+::string \&hex\+\_\+str)
+\item 
+{\footnotesize template$<$typename In\+Container $>$ }\\void \mbox{\hyperlink{namespacepicosha2_a42d761522a416bf533b951433f4d68de}{picosha2\+::hash256\+\_\+hex\+\_\+string}} (const In\+Container \&src, std\+::string \&hex\+\_\+str)
+\item 
+{\footnotesize template$<$typename In\+Container $>$ }\\std\+::string \mbox{\hyperlink{namespacepicosha2_afe081b5ad4bbf1f10d0b5f8ba5970fa7}{picosha2\+::hash256\+\_\+hex\+\_\+string}} (const In\+Container \&src)
+\item 
+{\footnotesize template$<$typename Out\+Iter $>$ }\\void \mbox{\hyperlink{namespacepicosha2_af858b1da2286ad05c73945ebeb70b573}{picosha2\+::hash256}} (std\+::ifstream \&f, Out\+Iter first, Out\+Iter last)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_ad3cb0b9e363109b709fea56e7312e155}{picosha2\+::detail\+::add\+\_\+constant}} \mbox{[}64\mbox{]}
+\item 
+const word\+\_\+t \mbox{\hyperlink{namespacepicosha2_1_1detail_aeaea507d81fb16cbefcb62f74642209e}{picosha2\+::detail\+::initial\+\_\+message\+\_\+digest}} \mbox{[}8\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{picosha2_8h_a111a47b5eda216a1cc130ec492bf1f0a}\label{picosha2_8h_a111a47b5eda216a1cc130ec492bf1f0a}} 
+\index{picosha2.h@{picosha2.h}!PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR@{PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR}}
+\index{PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR@{PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR}!picosha2.h@{picosha2.h}}
+\doxysubsubsection{\texorpdfstring{PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR}{PICOSHA2\_BUFFER\_SIZE\_FOR\_INPUT\_ITERATOR}}
+{\footnotesize\ttfamily \#define PICOSHA2\+\_\+\+BUFFER\+\_\+\+SIZE\+\_\+\+FOR\+\_\+\+INPUT\+\_\+\+ITERATOR~    1048576}
+
+
+
+Definition at line \mbox{\hyperlink{picosha2_8h_source_l00029}{29}} of file \mbox{\hyperlink{picosha2_8h_source}{picosha2.\+h}}.
+

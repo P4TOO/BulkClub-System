@@ -1,0 +1,103 @@
+\hypertarget{itemdisplay_8cpp_source}{}\doxysection{itemdisplay.\+cpp}
+\mbox{\hyperlink{itemdisplay_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{itemdisplay_8h}{itemdisplay.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_itemdisplay.h"{}}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QSqlDatabase>}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QSqlError>}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlQuery>}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <QSqlQueryModel>}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <QTableView>}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <QSqlRecord>}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00010}\mbox{\hyperlink{classitem_display_ab248881b74bf8a35e0f605a11f44a80e}{00010}} \mbox{\hyperlink{classitem_display_ab248881b74bf8a35e0f605a11f44a80e}{itemDisplay::itemDisplay}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00011}00011     QDialog(parent),}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00012}00012     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{classitem_display}{itemDisplay}})}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00014}00014     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00016}00016     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00018}00018     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/mitch/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00020}00020     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00022}00022     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00024}00024     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00027}00027     query.prepare(\textcolor{stringliteral}{"{}SELECT item\_purchased, SUM(sales\_price* quantity\_purchased) AS Total\_Price , SUM(quantity\_purchased) AS Total\_Quantity FROM Sales\_Record GROUP BY Item\_Purchased ORDER BY Total\_Price DESC"{}});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00029}00029     query.exec();}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00031}00031     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00033}00033     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00034}00034     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00039}\mbox{\hyperlink{classitem_display_a1ba9c8a0ec57322493b9ff6375e9941e}{00039}} \mbox{\hyperlink{classitem_display_a1ba9c8a0ec57322493b9ff6375e9941e}{itemDisplay::\string~itemDisplay}}()}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00040}00040 \{}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00041}00041     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00045}00045 \textcolor{keywordtype}{void} itemDisplay::on\_searchButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00046}00046 \{}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00048}00048     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00049}00049     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-\/System\_v6/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00050}00050     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00052}00052     QString item = ui-\/>itemSearchBar-\/>text();}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00053}00053     QSqlQueryModel * model2 = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00054}00054     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00055}00055     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM sales\_record WHERE Item\_Purchased=(:item)"{}});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00056}00056     query.bindValue(\textcolor{stringliteral}{"{}:item"{}},item);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00057}00057     query.exec();}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00059}00059     model2-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00061}00061     ui-\/>tableView-\/>setModel(model2);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00063}00063     QSqlRecord totalSalesAndQuantityRecord;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00064}00064     \textcolor{keywordtype}{int} totalSalesIterator = 0;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00065}00065     \textcolor{keywordtype}{double} salesPrice = 0;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00066}00066     \textcolor{keywordtype}{int} salesQuantity = 0;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00067}00067     \textcolor{keywordtype}{double} priceTotal = 0;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00068}00068     \textcolor{keywordtype}{int} totalQuantity = 0;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00070}00070     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00071}00071         totalSalesAndQuantityRecord = model2 -\/> record(totalSalesIterator);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00072}00072         salesPrice = totalSalesAndQuantityRecord.value(3).toDouble(); \textcolor{comment}{//value at index 3 in the row should be Sales\_Price}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00073}00073         salesQuantity = totalSalesAndQuantityRecord.value(4).toInt(); \textcolor{comment}{//value at index 4 in the row should be Quantity\_Purchased}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00074}00074         priceTotal += salesPrice * salesQuantity;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00075}00075         totalQuantity += salesQuantity;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00076}00076         totalSalesIterator++;}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00078}00078     \} \textcolor{keywordflow}{while} (!totalSalesAndQuantityRecord.isNull(3));}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00080}00080     QString finalPriceTotal = finalPriceTotal.number(priceTotal, \textcolor{charliteral}{'f'}, 2);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00081}00081     finalPriceTotal.prepend(\textcolor{stringliteral}{"{}Total revenue for item: "{}});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00083}00083     QString finalQuantityTotal =  finalQuantityTotal.number(totalQuantity, \textcolor{charliteral}{'f'}, 0);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00084}00084     finalQuantityTotal.prepend(\textcolor{stringliteral}{"{}Total quantity for item: "{}});}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00086}00086     ui-\/>itemQuantityTotal-\/>setText(finalQuantityTotal);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00087}00087     ui-\/>itemPriceTotal-\/>setText(finalPriceTotal);}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00089}00089 \}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00094}00094 \textcolor{keywordtype}{void} itemDisplay::on\_pushButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00095}00095 \{}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00096}00096     this-\/>close();}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00097}00097 \}}
+\DoxyCodeLine{\Hypertarget{itemdisplay_8cpp_source_l00098}00098 }
+
+\end{DoxyCode}

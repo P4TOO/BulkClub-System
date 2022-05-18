@@ -1,0 +1,58 @@
+\hypertarget{logindialog_8h_source}{}\doxysection{logindialog.\+h}
+\mbox{\hyperlink{logindialog_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef LOGINDIALOG\_H}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00002}00002 \textcolor{preprocessor}{\#define LOGINDIALOG\_H}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <QDialog>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <QLabel>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <QPushButton>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <QDialogButtonBox>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00009}00009 \textcolor{preprocessor}{\#include <QMessageBox>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00010}00010 \textcolor{preprocessor}{\#include <QLineEdit>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <QComboBox>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <QGridLayout>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <QStringList>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <QDebug>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{storemanager_8h}{storemanager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{admin_8h}{admin.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00020}\mbox{\hyperlink{class_login_dialog}{00020}} \textcolor{keyword}{class }\mbox{\hyperlink{class_login_dialog}{LoginDialog}} : \textcolor{keyword}{public} QDialog \{}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00021}00021     Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00022}00022 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00026}00026     QLabel* labelUsername;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00028}00028     QLabel* labelPassword;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00030}00030     QLineEdit* editUsername;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00032}00032     QLineEdit* editPassword;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00034}00034     QDialogButtonBox* buttons;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00036}00036     \textcolor{keywordtype}{void} setUpGUI();}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00038}00038     \mbox{\hyperlink{class_store_manager}{StoreManager}}* StoreManagerWindow = NULL;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00039}00039     \mbox{\hyperlink{class_admin}{Admin}}* adminWindow = NULL;}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00041}00041 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00042}00042     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_login_dialog_a7456f32deb63b8d3fb66b76f1e97977e}{LoginDialog}}(QWidget* parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00043}00043     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_a88658a40f5c8285ce60036a1085e268d}{setUsername}}( QString\& username );}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00044}00044     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_ad2d88ae10981ceeb7d0c243dcc82624f}{setPassword}}( QString\& password );}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00045}00045 signals:}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00046}\mbox{\hyperlink{class_login_dialog_a388a52ece297fdbb273cd8f48764847c}{00046}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_a388a52ece297fdbb273cd8f48764847c}{acceptLogin}}( QString\& username, QString\& password );}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00047}00047 \textcolor{keyword}{public} slots:}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00050}00050     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_ab0db659ba66fc87ac30878b97b773cdb}{slotAcceptLogin}}();}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00051}00051 \};}
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{logindialog_8h_source_l00053}00053 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// LOGINDIALOG\_H}}
+
+\end{DoxyCode}

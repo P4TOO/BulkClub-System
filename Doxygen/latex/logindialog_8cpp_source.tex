@@ -1,0 +1,131 @@
+\hypertarget{logindialog_8cpp_source}{}\doxysection{logindialog.\+cpp}
+\mbox{\hyperlink{logindialog_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{logindialog_8h}{logindialog.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <QSqlDatabase>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QSqlError>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QSqlQuery>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlQueryModel>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <QTableView>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <QSqlRecord>}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{picosha2_8h}{picosha2.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00010}\mbox{\hyperlink{class_login_dialog_a7456f32deb63b8d3fb66b76f1e97977e}{00010}} \mbox{\hyperlink{class_login_dialog_a7456f32deb63b8d3fb66b76f1e97977e}{LoginDialog::LoginDialog}}(QWidget* parent)}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00011}00011     :QDialog(parent)}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00012}00012 \{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00013}00013     setUpGUI();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00014}00014     setWindowTitle( tr(\textcolor{stringliteral}{"{}User Login"{}}) );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00015}00015     setModal( \textcolor{keyword}{true} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00016}00016 \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00018}00018 \textcolor{keywordtype}{void} LoginDialog::setUpGUI()\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00021}00021     QGridLayout* formGridLayout = \textcolor{keyword}{new} QGridLayout( \textcolor{keyword}{this} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00024}00024     editUsername = \textcolor{keyword}{new} QLineEdit( \textcolor{keyword}{this} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00025}00025     editPassword = \textcolor{keyword}{new} QLineEdit( \textcolor{keyword}{this} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00026}00026     editPassword-\/>setEchoMode( QLineEdit::Password );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00028}00028     labelUsername = \textcolor{keyword}{new} QLabel( \textcolor{keyword}{this} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00029}00029     labelUsername-\/>setText( tr( \textcolor{stringliteral}{"{}Username"{}} ) );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00030}00030     labelUsername-\/>setBuddy( editUsername );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00032}00032     labelPassword = \textcolor{keyword}{new} QLabel( \textcolor{keyword}{this} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00033}00033     labelPassword-\/>setText( tr( \textcolor{stringliteral}{"{}Password"{}} ) );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00034}00034     labelPassword-\/>setBuddy( editPassword );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00037}00037     buttons = \textcolor{keyword}{new} QDialogButtonBox( \textcolor{keyword}{this} );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00038}00038     buttons-\/>addButton( QDialogButtonBox::Ok );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00039}00039     buttons-\/>addButton( QDialogButtonBox::Cancel );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00040}00040     buttons-\/>button( QDialogButtonBox::Ok )-\/>setText( tr(\textcolor{stringliteral}{"{}Login"{}}) );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00041}00041     buttons-\/>button( QDialogButtonBox::Cancel )-\/>setText( tr(\textcolor{stringliteral}{"{}Cancel"{}}) );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00043}00043     connect( buttons-\/>button( QDialogButtonBox::Cancel ),}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00044}00044         SIGNAL (clicked()),}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00045}00045         \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00046}00046         SLOT (close())}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00047}00047         );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00049}00049     connect( buttons-\/>button( QDialogButtonBox::Ok ),}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00050}00050         SIGNAL (clicked()),}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00051}00051         \textcolor{keyword}{this},}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00052}00052         SLOT (\mbox{\hyperlink{class_login_dialog_ab0db659ba66fc87ac30878b97b773cdb}{slotAcceptLogin}}()) );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00055}00055     formGridLayout-\/>addWidget( labelUsername, 0, 0 );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00056}00056     formGridLayout-\/>addWidget( editUsername, 0, 1 );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00057}00057     formGridLayout-\/>addWidget( labelPassword, 1, 0 );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00058}00058     formGridLayout-\/>addWidget( editPassword, 1, 1 );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00059}00059     formGridLayout-\/>addWidget( buttons, 2, 0, 1, 2 );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00060}00060     setLayout( formGridLayout );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00062}00062 \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00064}\mbox{\hyperlink{class_login_dialog_a88658a40f5c8285ce60036a1085e268d}{00064}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_a88658a40f5c8285ce60036a1085e268d}{LoginDialog::setUsername}}(QString \&username)\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00066}00066    editUsername-\/>setText(username);}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00067}00067 \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00069}\mbox{\hyperlink{class_login_dialog_ad2d88ae10981ceeb7d0c243dcc82624f}{00069}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_ad2d88ae10981ceeb7d0c243dcc82624f}{LoginDialog::setPassword}}(QString \&password)\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00071}00071     editPassword-\/>setText( password );}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00072}00072 \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00074}\mbox{\hyperlink{class_login_dialog_ab0db659ba66fc87ac30878b97b773cdb}{00074}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_login_dialog_ab0db659ba66fc87ac30878b97b773cdb}{LoginDialog::slotAcceptLogin}}()\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00075}00075     QString notFound = \textcolor{stringliteral}{"{}Profile not found, check login information"{}};}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00076}00076     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00077}00077 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00078}00078     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00080}00080     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00082}00082     QString username = editUsername-\/>text(); \textcolor{comment}{//pulls the values from the text edit lines}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00083}00083     QString password = editPassword-\/>text();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00084}00084     std::string passStr = password.toStdString();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00086}00086     QSqlQueryModel model;\textcolor{comment}{//model is readonly access to query results}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00087}00087     QSqlRecord record;\textcolor{comment}{//record accesses records returned by a query}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00088}00088     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00089}00089     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM users WHERE username=(:name)"{}});}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00090}00090     query.bindValue(\textcolor{stringliteral}{"{}:name"{}},username);}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00091}00091     query.exec(); \textcolor{comment}{//query must be active before being moved into the model}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00093}00093     model.setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00094}00094     record = model.record(0); \textcolor{comment}{//sets the record to the first record in the query results}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00095}00095     QString hashToComp = record.value(1).toString();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00096}00096     QString salt = record.value(3).toString();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00097}00097     passStr.append(salt.toStdString());}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00099}00099     \textcolor{comment}{//generates a hash to compare against the value in the db}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00100}00100     std::vector<unsigned char> hash(picosha2::k\_digest\_size);}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00101}00101     \mbox{\hyperlink{namespacepicosha2_a02ab64f426983365dae3582b27a58b56}{picosha2::hash256}}(passStr.begin(),passStr.end(),hash.begin(),hash.end());}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00102}00102     std::string saltedHashStr = \mbox{\hyperlink{namespacepicosha2_a3b55a2a4a4f7c73e61f8b57e1dabca50}{picosha2::bytes\_to\_hex\_string}}(hash.begin(),hash.end());}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00103}00103     QString saltedHash = saltedHash.fromStdString(saltedHashStr);}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00105}00105     \textcolor{keywordtype}{bool} admin = record.value(2).toBool();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00107}00107     \textcolor{keywordflow}{if} (QString::compare(hashToComp,saltedHash,Qt::CaseSensitive) == 0)\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00108}00108         qDebug().noquote() << \textcolor{stringliteral}{"{}correct login"{}};}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00109}00109 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00110}00110         \textcolor{keywordflow}{if}(admin)\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00111}00111             qDebug().noquote() << \textcolor{stringliteral}{"{}Logging in as admin"{}};}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00112}00112             adminWindow = \textcolor{keyword}{new} \mbox{\hyperlink{class_admin}{Admin}};}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00113}00113             adminWindow-\/>show();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00114}00114         \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00115}00115         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00116}00116             qDebug().noquote() << \textcolor{stringliteral}{"{}Logging in as a user"{}};}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00117}00117             StoreManagerWindow = \textcolor{keyword}{new} \mbox{\hyperlink{class_store_manager}{StoreManager}};}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00118}00118             StoreManagerWindow-\/>show();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00119}00119         \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00121}00121         this-\/>close();}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00122}00122     \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00123}00123     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00124}00124         qDebug().noquote() << notFound;}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00125}00125     \}}
+\DoxyCodeLine{\Hypertarget{logindialog_8cpp_source_l00126}00126 \}}
+
+\end{DoxyCode}

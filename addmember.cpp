@@ -47,7 +47,7 @@ else
    db.open();                                                                  //the .db file should be kept within the repository for now
 
    QSqlQuery query(db);
-   query.prepare("INSERT INTO Members VALUES ((:name),(:id),(:type),(:expiry),(:cost))");
+   query.prepare("INSERT INTO Members VALUES ((:name),(:id),(:type),(:expiry),(:cost),(:rebate))");
 
    query.bindValue(":name", name);
    query.bindValue(":id", id);
@@ -59,6 +59,7 @@ else
    else{
        query.bindValue(":cost",120);
    }
+   query.bindValue(":rebate", 0);
 
    if (!query.exec() )
    {

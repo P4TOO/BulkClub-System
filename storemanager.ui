@@ -20,10 +20,10 @@
    <widget class="QPushButton" name="member_rebates">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>220</y>
+      <x>310</x>
+      <y>240</y>
       <width>181</width>
-      <height>31</height>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -41,10 +41,10 @@
    <widget class="QPushButton" name="member_purchases">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>260</y>
+      <x>310</x>
+      <y>300</y>
       <width>181</width>
-      <height>31</height>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -62,10 +62,10 @@
    <widget class="QPushButton" name="membership_expiry_search">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>310</x>
       <y>180</y>
       <width>181</width>
-      <height>31</height>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -83,10 +83,10 @@
    <widget class="QPushButton" name="item_inventory">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>270</y>
-      <width>141</width>
-      <height>81</height>
+      <x>90</x>
+      <y>240</y>
+      <width>181</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -95,7 +95,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(255, 238, 89)</string>
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
     </property>
     <property name="text">
      <string>Item Inventory</string>
@@ -104,10 +104,10 @@
    <widget class="QPushButton" name="sales_report">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>90</x>
       <y>180</y>
-      <width>141</width>
-      <height>81</height>
+      <width>181</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -119,8 +119,7 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(240, 255, 240)
-</string>
+     <string notr="true">background-color:rgb(255, 238, 89)</string>
     </property>
     <property name="text">
      <string>Sales Report</string>
@@ -205,10 +204,10 @@
    <widget class="QPushButton" name="new_purchase">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>90</x>
       <y>300</y>
       <width>181</width>
-      <height>51</height>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -217,7 +216,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(162, 131, 255)</string>
+     <string notr="true">background-color: rgb(105, 146, 255)</string>
     </property>
     <property name="text">
      <string notr="true">New Purchase</string>
@@ -227,13 +226,18 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>30</y>
+      <y>20</y>
       <width>80</width>
       <height>24</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(85, 170, 255)</string>
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
     </property>
     <property name="text">
      <string>Logout</string>

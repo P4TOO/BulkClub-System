@@ -15,7 +15,7 @@ itemDisplay::itemDisplay(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
     db.open();                                                                  //the .db file should be kept within the repository for now
 
@@ -23,13 +23,16 @@ itemDisplay::itemDisplay(QWidget *parent) :
 
     QSqlQuery query(db);
 
-    query.prepare("SELECT item_purchased, SUM(sales_price* quantity_purchased) AS Total_Price , SUM(quantity_purchased) AS Total_Quantity FROM Inventory GROUP BY item_purchased ORDER BY Total_Price DESC");
+
+    query.prepare("SELECT item_purchased, SUM(sales_price* quantity_purchased) AS Total_Price , SUM(quantity_purchased) AS Total_Quantity FROM Sales_Record GROUP BY Item_Purchased ORDER BY Total_Price DESC");
 
     query.exec();
 
     model->setQuery(std::move(query));
 
     ui->tableView->setModel(model);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
 
 }
 
@@ -43,13 +46,13 @@ void itemDisplay::on_searchButton_clicked()
 {
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString item = ui->itemSearchBar->text();
     QSqlQueryModel * model2 = new QSqlQueryModel();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Inventory WHERE Item_Purchased=(:item)");
+    query.prepare("SELECT * FROM sales_record WHERE Item_Purchased=(:item)");
     query.bindValue(":item",item);
     query.exec();
 
@@ -84,3 +87,12 @@ void itemDisplay::on_searchButton_clicked()
     ui->itemPriceTotal->setText(finalPriceTotal);
 
 }
+
+
+
+
+void itemDisplay::on_pushButton_clicked()
+{
+    this->close();
+}
+

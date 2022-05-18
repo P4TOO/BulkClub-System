@@ -15,7 +15,7 @@ rebateWindow::rebateWindow(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlTableModel * model = new QSqlTableModel();
@@ -24,7 +24,7 @@ rebateWindow::rebateWindow(QWidget *parent) :
     model->setFilter("Membership_Type='Executive'");
     model->setSort(1,Qt::AscendingOrder);
     model->select();
-
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->setModel(model);
 }
 

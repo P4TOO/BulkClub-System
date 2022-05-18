@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Store Manager</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -119,7 +119,8 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(241, 115, 0)</string>
+     <string notr="true">background-color: rgb(240, 255, 240)
+</string>
     </property>
     <property name="text">
      <string>Sales Report</string>
@@ -219,7 +220,23 @@
      <string notr="true">background-color:rgb(162, 131, 255)</string>
     </property>
     <property name="text">
-     <string>New Purchase</string>
+     <string notr="true">New Purchase</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="logout">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>30</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(85, 170, 255)</string>
+    </property>
+    <property name="text">
+     <string>Logout</string>
     </property>
    </widget>
    <zorder>layoutWidget</zorder>
@@ -232,6 +249,7 @@
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>new_purchase</zorder>
+   <zorder>logout</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSales_Report">

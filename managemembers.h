@@ -25,6 +25,12 @@ private slots:
 
     void on_DisplayAllPushButton_clicked();
 
+    void on_searchLineEdit_returnPressed();
+
+    void on_deleteMemberLineEdit_returnPressed();
+
+    void on_ExitButton_clicked();
+
 private:
     Ui::managemembers *ui;
     AddMember* addMemberWindow = NULL;

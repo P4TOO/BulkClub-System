@@ -19,7 +19,7 @@ Admin::~Admin()
 void Admin::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/mitch/BulkClub-System/BulkClubProject.db");
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");
 
     if(!db.open())
     {
@@ -65,5 +65,11 @@ void Admin::on_ManageInventoryPushbutton_clicked()
 {
     inventoryEditWindow = new ManageInventory;
     inventoryEditWindow->show();
+}
+
+
+void Admin::on_actionSave_triggered()
+{
+    QMessageBox::information(this, "Save", "Success, all changes saved");
 }
 

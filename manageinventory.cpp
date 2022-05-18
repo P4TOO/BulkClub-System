@@ -1,6 +1,7 @@
 #include "manageinventory.h"
 #include "ui_manageinventory.h"
 #include <QModelIndex>
+#include <QMessageBox>
 
 ManageInventory::ManageInventory(QWidget *parent) :
     QWidget(parent),
@@ -9,7 +10,7 @@ ManageInventory::ManageInventory(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
     model = new QSqlTableModel(NULL,db);
     model->setTable("Inventory");
@@ -18,6 +19,7 @@ ManageInventory::ManageInventory(QWidget *parent) :
 
     ui->RowToDel->setMaximum(model->rowCount(invalidIndex));
     ui->tableView->setModel(model);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableView->show();
 }
 
@@ -31,6 +33,7 @@ ManageInventory::~ManageInventory()
 void ManageInventory::on_SaveButton_clicked()
 {
     model->submitAll();
+    QMessageBox::information(this, "Save", "Success, all changes saved");
 }
 
 

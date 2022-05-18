@@ -6,20 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>686</width>
-    <height>573</height>
+    <width>730</width>
+    <height>594</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Membership Expiration</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>530</y>
-     <width>381</width>
-     <height>26</height>
+     <x>10</x>
+     <y>10</y>
+     <width>701</width>
+     <height>511</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>540</y>
+     <width>499</width>
+     <height>32</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -66,6 +76,18 @@
      </widget>
     </item>
     <item>
+     <widget class="QPushButton" name="DisplayAllButton">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Display All</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QPushButton" name="cancelButton">
       <property name="font">
        <font>
@@ -81,16 +103,6 @@
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QTableView" name="tableView">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>661</width>
-     <height>511</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources/>

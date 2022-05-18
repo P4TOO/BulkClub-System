@@ -76,7 +76,6 @@ void LoginDialog::slotAcceptLogin(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
     db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
-
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString username = editUsername->text(); //pulls the values from the text edit lines

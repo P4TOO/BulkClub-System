@@ -22,7 +22,11 @@ memberPurchases::memberPurchases(QWidget *parent) :
     QSqlQueryModel * model0 = new QSqlQueryModel();
    //model is readonly access to query results
     QSqlQuery query(db);
+<<<<<<< HEAD
     query.prepare("SELECT Membership_Number, (SELECT Member_Name from Members WHERE Members.Membership_ID=Sales_Record.Membership_Number) as Member_Name, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Sales_Record GROUP BY Membership_number ORDER BY Membership_number");
+=======
+    query.prepare("SELECT Membership_number, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Sales_Record GROUP BY Membership_number ORDER BY Membership_number");
+>>>>>>> d033b2afe46391d91d7de44a66a1fce1caaf619b
 
     query.exec(); //query must be active before being moved into the model
 

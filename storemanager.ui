@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Store Manager</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -172,7 +172,7 @@
      <pixmap>../Misc 2/Downloads/output-onlinepngtools.png</pixmap>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -201,6 +201,7 @@
      </item>
     </layout>
    </widget>
+   <zorder>layoutWidget</zorder>
    <zorder>graphicsView_2</zorder>
    <zorder>member_rebates</zorder>
    <zorder>member_purchases</zorder>
@@ -208,8 +209,6 @@
    <zorder>item_inventory</zorder>
    <zorder>sales_report</zorder>
    <zorder>label</zorder>
-   <zorder>checkDatabaseConnection</zorder>
-   <zorder>exitButton</zorder>
    <zorder>label_2</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

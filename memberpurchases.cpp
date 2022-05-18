@@ -15,12 +15,8 @@ memberPurchases::memberPurchases(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-<<<<<<< Updated upstream
     db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
-=======
-    db.setDatabaseName("C://Users/mitch/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
->>>>>>> Stashed changes
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model0 = new QSqlQueryModel();

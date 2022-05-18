@@ -14,29 +14,6 @@ StoreManager::~StoreManager()
     delete ui;
 }
 
-
-<<<<<<< HEAD
-void  StoreManager::on_pushButton_clicked()
-{
-    QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
-
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");
-
-
-    if(!db.open())
-    {
-        QMessageBox::information(this, "Not Connected", "Database is not connected");
-
-    } else
-    {
-        QMessageBox::information(this, "Connected", "Database connected successfully");
-
-    }
-
-}
-
-=======
->>>>>>> 6e94b28488d84adc6e5302c88a8bd2e1c65c6b1b
 void StoreManager::on_sales_report_clicked()
 {
     SalesReportWindow = new SalesReport;
@@ -74,7 +51,6 @@ void StoreManager::on_new_purchase_clicked()
     purchaseWindow = new newPurchase;
     purchaseWindow->show();
 }
-
 
 
 void StoreManager::on_logout_clicked()

@@ -1,0 +1,66 @@
+\hypertarget{memberupgrade_8cpp_source}{}\doxysection{memberupgrade.\+cpp}
+\mbox{\hyperlink{memberupgrade_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{memberupgrade_8h}{memberupgrade.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_memberupgrade.h"{}}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QSqlDatabase>}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QSqlError>}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlQuery>}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <QSqlQueryModel>}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <QTableView>}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <QSqlRecord>}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00010}\mbox{\hyperlink{classmemberupgrade_a9162630904055a86e20ddd1ac6f483a5}{00010}} \mbox{\hyperlink{classmemberupgrade_a9162630904055a86e20ddd1ac6f483a5}{memberupgrade::memberupgrade}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00011}00011     QDialog(parent),}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00012}00012     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{classmemberupgrade}{memberupgrade}})}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00014}00014     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00016}00016     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00017}00017     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00018}00018     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00020}00020     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00021}00021     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00022}00022     query.prepare(\textcolor{stringliteral}{"{}SELECT Member\_Name, Membership\_ID, Current\_Rebate, Membership\_Type "{}}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00023}00023                   \textcolor{stringliteral}{"{}FROM Members "{}}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00024}00024                   \textcolor{stringliteral}{"{}WHERE Membership\_Type='Executive' AND Current\_Rebate < 60.00"{}});}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00025}00025     query.exec();}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00027}00027     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00029}00029     \textcolor{keywordtype}{int} downgradeCount = model-\/>rowCount(invalidIndex);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00030}00030     QString downgradeString = \textcolor{stringliteral}{"{}Downgrades: "{}};}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00031}00031     downgradeString.append(QString::number(downgradeCount));}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00032}00032     ui-\/>downgradeLabel-\/>setText(downgradeString);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00034}00034     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00036}00036     QSqlQueryModel * model2 = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00037}00037     QSqlQuery query2(db);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00038}00038     query2.prepare(\textcolor{stringliteral}{"{}SELECT (SELECT Member\_Name FROM Members WHERE Members.Membership\_ID=Sales\_Record.Membership\_Number) AS Member\_Name,Membership\_Number, SUM(Quantity\_Purchased * Sales\_Price) AS Total\_Spendings, (SELECT Membership\_Type FROM Members WHERE Members.Membership\_ID=Sales\_Record.Membership\_Number)AS Membership\_Type FROM Sales\_Record "{}}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00040}00040                    \textcolor{stringliteral}{"{} GROUP BY Membership\_Number HAVING Total\_Spendings > 2750.00 AND Membership\_Type = 'Regular'"{}});}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00042}00042     query2.exec();}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00044}00044     model2-\/>setQuery(std::move(query2));}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00046}00046     \textcolor{keywordtype}{int} upgradeCount = model2-\/>rowCount(invalidIndex);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00047}00047     QString upgradeString = \textcolor{stringliteral}{"{}Upgrades: "{}};}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00048}00048     upgradeString.append(QString::number(upgradeCount));}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00049}00049     ui-\/>upgradeLabel-\/>setText(upgradeString);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00050}00050     ui-\/>tableView\_2-\/>setModel(model2);}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00053}\mbox{\hyperlink{classmemberupgrade_ab3193c14b65e510e321557e232bd812f}{00053}} \mbox{\hyperlink{classmemberupgrade_ab3193c14b65e510e321557e232bd812f}{memberupgrade::\string~memberupgrade}}()}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00054}00054 \{}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00055}00055     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00058}00058 \textcolor{keywordtype}{void} memberupgrade::on\_cancelButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00060}00060     close();}
+\DoxyCodeLine{\Hypertarget{memberupgrade_8cpp_source_l00061}00061 \}}
+
+\end{DoxyCode}

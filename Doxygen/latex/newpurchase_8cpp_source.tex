@@ -1,0 +1,78 @@
+\hypertarget{newpurchase_8cpp_source}{}\doxysection{newpurchase.\+cpp}
+\mbox{\hyperlink{newpurchase_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{newpurchase_8h}{newpurchase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_newpurchase.h"{}}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00004}\mbox{\hyperlink{classnew_purchase_a4ffcd9fdbd83311f9f2c71a961ae0b37}{00004}} \mbox{\hyperlink{classnew_purchase_a4ffcd9fdbd83311f9f2c71a961ae0b37}{newPurchase::newPurchase}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00005}00005     QWidget(parent),}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00006}00006     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{classnew_purchase}{newPurchase}})}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00008}00008     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00009}00009     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00010}00010     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00011}00011     db.open();\textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00013}00013     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00015}00015     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00017}00017     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Inventory"{}});}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00018}00018     query.exec();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00019}00019     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00020}00020     \textcolor{keywordtype}{int} inventoryIterator = 0;}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00021}00021     QSqlRecord record;}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00022}00022     QStringList itemList;}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00023}00023     \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00024}00024         record = model-\/>record(inventoryIterator);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00025}00025         itemList.append(record.value(0).toString());}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00026}00026         inventoryIterator++;}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00027}00027     \}\textcolor{keywordflow}{while}(!record.isNull(0));}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00028}00028     ui-\/>itemBox-\/>addItems(itemList);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00031}\mbox{\hyperlink{classnew_purchase_ade2d54db739055203133d09dd635aeee}{00031}} \mbox{\hyperlink{classnew_purchase_ade2d54db739055203133d09dd635aeee}{newPurchase::\string~newPurchase}}()}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00033}00033     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00034}00034 \}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00037}00037 \textcolor{keywordtype}{void} newPurchase::on\_cancelButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00039}00039     close();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00043}00043 \textcolor{keywordtype}{void} newPurchase::on\_SubmitButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00045}00045     QString purchaseDate = ui-\/>dateLineEdit-\/>text();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00046}00046     \textcolor{keywordtype}{int} memberId = ui-\/>idLineEdit-\/>text().toInt();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00047}00047     \textcolor{keywordtype}{int} quantity = ui-\/>quantityLineEdit-\/>text().toInt();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00048}00048     QString itemName = ui-\/>itemBox-\/>currentText();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00049}00049     QSqlRecord record;}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00050}00050     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00051}00051     db.setDatabaseName(\textcolor{stringliteral}{"{}C:/Users/zacal/CS1C/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00052}00052     db.open();\textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00054}00054     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00055}00055     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00056}00056     query.prepare(\textcolor{stringliteral}{"{}SELECT Product\_Price FROM Inventory WHERE Product\_Name=(:name)"{}});}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00057}00057     query.bindValue(\textcolor{stringliteral}{"{}:name"{}},itemName);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00058}00058     query.exec();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00059}00059     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00060}00060     record = model-\/>record(0);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00061}00061     \textcolor{keywordtype}{double} price = record.value(0).toDouble();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00062}00062     qDebug() << record.value(0).toString();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00064}00064     QSqlQuery query2(db);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00065}00065     query2.prepare(\textcolor{stringliteral}{"{}INSERT INTO Sales\_Record VALUES ((:date),(:id),(:name),(:price),(:quantity))"{}});}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00066}00066     query2.bindValue(\textcolor{stringliteral}{"{}:date"{}},purchaseDate);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00067}00067     query2.bindValue(\textcolor{stringliteral}{"{}:id"{}},memberId);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00068}00068     query2.bindValue(\textcolor{stringliteral}{"{}:name"{}},itemName);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00069}00069     query2.bindValue(\textcolor{stringliteral}{"{}:price"{}},price);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00070}00070     query2.bindValue(\textcolor{stringliteral}{"{}:quantity"{}},quantity);}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00071}00071     query2.exec();}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00072}00072 \}}
+\DoxyCodeLine{\Hypertarget{newpurchase_8cpp_source_l00073}00073 }
+
+\end{DoxyCode}

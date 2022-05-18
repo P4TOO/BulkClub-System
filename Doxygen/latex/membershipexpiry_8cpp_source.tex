@@ -1,0 +1,87 @@
+\hypertarget{membershipexpiry_8cpp_source}{}\doxysection{membershipexpiry.\+cpp}
+\mbox{\hyperlink{membershipexpiry_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{membershipexpiry_8h}{membershipexpiry.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}ui\_membershipexpiry.h"{}}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <QSqlDatabase>}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <QSqlError>}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlQuery>}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <QSqlQueryModel>}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <QTableView>}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <QSqlRecord>}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00010}\mbox{\hyperlink{class_membership_expiry_a62f532a4525b34a00d6ea76492ab7ad5}{00010}} \mbox{\hyperlink{class_membership_expiry_a62f532a4525b34a00d6ea76492ab7ad5}{MembershipExpiry::MembershipExpiry}}(QWidget *parent) :}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00011}00011     QDialog(parent),}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00012}00012     ui(new \mbox{\hyperlink{namespace_ui}{Ui}}::\mbox{\hyperlink{class_membership_expiry}{MembershipExpiry}})}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00014}00014     ui-\/>setupUi(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00016}00016     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00017}00017     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/mitch/BulkClub-\/System/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00018}00018     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for no}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00020}00020     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00021}00021     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00022}00022     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Members"{}});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00023}00023     query.exec();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00025}00025     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00027}00027     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00028}00028     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00031}00031 \}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00033}\mbox{\hyperlink{class_membership_expiry_a7fcaf456d4ad25fd22ad255884123df8}{00033}} \mbox{\hyperlink{class_membership_expiry_a7fcaf456d4ad25fd22ad255884123df8}{MembershipExpiry::\string~MembershipExpiry}}()}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00034}00034 \{}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00035}00035     \textcolor{keyword}{delete} ui;}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00036}00036 \}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00040}00040 \textcolor{keywordtype}{void} MembershipExpiry::on\_searchButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00041}00041 \{}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00042}00042     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00043}00043     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-\/System\_v6/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00044}00044     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for now}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00046}00046     QString date = ui-\/>dateLineEdit-\/>text();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00047}00047     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00048}00048     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00049}00049     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Members WHERE Membership\_Expiry=(:date)"{}});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00050}00050     query.bindValue(\textcolor{stringliteral}{"{}:date"{}},date);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00051}00051     query.exec();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00053}00053     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00055}00055     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00057}00057 \}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00059}00059 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00060}00060 \textcolor{keywordtype}{void} MembershipExpiry::on\_cancelButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00061}00061 \{}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00062}00062     close();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00066}00066 \textcolor{keywordtype}{void} MembershipExpiry::on\_DisplayAllButton\_clicked()}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00067}00067 \{}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00068}00068     QSqlDatabase db = QSqlDatabase::addDatabase(\textcolor{stringliteral}{"{}QSQLITE"{}});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00069}00069     db.setDatabaseName(\textcolor{stringliteral}{"{}C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-\/System\_v6/BulkClubProject.db"{}});\textcolor{comment}{//This line and the previous connect to the sqlite database at this file location,}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00070}00070     db.open();                                                                  \textcolor{comment}{//the .db file should be kept within the repository for no}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00072}00072     QSqlQueryModel * model = \textcolor{keyword}{new} QSqlQueryModel();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00073}00073     QSqlQuery query(db);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00074}00074     query.prepare(\textcolor{stringliteral}{"{}SELECT * FROM Members"{}});}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00075}00075     query.exec();}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00077}00077     model-\/>setQuery(std::move(query));}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00079}00079     ui-\/>tableView-\/>setModel(model);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00080}00080     ui-\/>tableView-\/>horizontalHeader()-\/>setSectionResizeMode(QHeaderView::Stretch);}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00081}00081 \}}
+\DoxyCodeLine{\Hypertarget{membershipexpiry_8cpp_source_l00082}00082 }
+
+\end{DoxyCode}

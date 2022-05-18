@@ -1,0 +1,41 @@
+\hypertarget{manageinventory_8h_source}{}\doxysection{manageinventory.\+h}
+\mbox{\hyperlink{manageinventory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef MANAGEINVENTORY\_H}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00002}00002 \textcolor{preprocessor}{\#define MANAGEINVENTORY\_H}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <QWidget>}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <QSqlTableModel>}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00007}00007 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespace_ui}{Ui}} \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00008}00008 \textcolor{keyword}{class }\mbox{\hyperlink{class_manage_inventory}{ManageInventory}};}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00009}00009 \}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00011}\mbox{\hyperlink{class_manage_inventory}{00011}} \textcolor{keyword}{class }\mbox{\hyperlink{class_manage_inventory}{ManageInventory}} : \textcolor{keyword}{public} QWidget}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00012}00012 \{}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00013}00013     Q\_OBJECT}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00015}00015 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00016}00016     \textcolor{keyword}{explicit} \mbox{\hyperlink{class_manage_inventory_a97a28f678c548feb7e9891f5927f983f}{ManageInventory}}(QWidget *parent = \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00017}00017     \mbox{\hyperlink{class_manage_inventory_a5f2c7ba2861457e5015cb7710e6f1a8b}{\string~ManageInventory}}();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00019}00019 \textcolor{keyword}{private} slots:}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00022}00022     \textcolor{keywordtype}{void} on\_SaveButton\_clicked();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00024}00024     \textcolor{keywordtype}{void} on\_Cancelbutton\_clicked();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00026}00026     \textcolor{keywordtype}{void} on\_AddRowButton\_clicked();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00028}00028     \textcolor{keywordtype}{void} on\_DelRowButton\_clicked();}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00030}00030 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00031}00031     Ui::ManageInventory *ui;}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00032}00032     QSqlTableModel* model = NULL;}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00033}00033     QModelIndex invalidIndex; \textcolor{comment}{//invalid index is a consequence of the tableModel class' inheritance}}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00034}00034 \};}
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{manageinventory_8h_source_l00036}00036 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// MANAGEINVENTORY\_H}}
+
+\end{DoxyCode}

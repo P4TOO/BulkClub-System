@@ -35,6 +35,8 @@ private slots:
 
     void on_member_rebates_clicked();
 
+    void on_LogOutButton_clicked();
+
 private:
     Ui::StoreManager *ui;
     SalesReport* SalesReportWindow = NULL;

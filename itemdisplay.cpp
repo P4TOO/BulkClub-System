@@ -24,7 +24,7 @@ itemDisplay::itemDisplay(QWidget *parent) :
     QSqlQuery query(db);
 
 
-    query.prepare("SELECT item_purchased, SUM(sales_price* quantity_purchased) AS Total_Price , SUM(quantity_purchased) AS Total_Quantity FROM Sales_Record GROUP BY item_purchased ORDER BY Total_Price DESC");
+    query.prepare("SELECT item_purchased, SUM(sales_price* quantity_purchased) AS Total_Price , SUM(quantity_purchased) AS Total_Quantity FROM Sales_Record GROUP BY Item_Purchased ORDER BY Total_Price DESC");
 
     query.exec();
 

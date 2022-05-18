@@ -62,3 +62,21 @@ void MembershipExpiry::on_cancelButton_clicked()
     close();
 }
 
+
+void MembershipExpiry::on_DisplayAllButton_clicked()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.open();                                                                  //the .db file should be kept within the repository for no
+
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QSqlQuery query(db);
+    query.prepare("SELECT * FROM Members");
+    query.exec();
+
+    model->setQuery(std::move(query));
+
+    ui->tableView->setModel(model);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
+

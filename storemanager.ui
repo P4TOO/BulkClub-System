@@ -119,7 +119,8 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(241, 115, 0)</string>
+     <string notr="true">background-color: rgb(240, 255, 240)
+</string>
     </property>
     <property name="text">
      <string>Sales Report</string>
@@ -201,6 +202,27 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="LogOutButton">
+    <property name="geometry">
+     <rect>
+      <x>464</x>
+      <y>20</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(241, 115, 0)</string>
+    </property>
+    <property name="text">
+     <string>Log Out</string>
+    </property>
+   </widget>
    <zorder>layoutWidget</zorder>
    <zorder>graphicsView_2</zorder>
    <zorder>member_rebates</zorder>
@@ -210,6 +232,7 @@
    <zorder>sales_report</zorder>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
+   <zorder>LogOutButton</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSales_Report">

@@ -40,7 +40,7 @@
      <string notr="true">background-color: rgb(241, 115, 0)</string>
     </property>
     <property name="text">
-     <string>Exit</string>
+     <string>Log Out</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">

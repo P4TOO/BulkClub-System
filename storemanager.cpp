@@ -65,3 +65,9 @@ void StoreManager::on_item_inventory_clicked()
     itemDisplayWindow = new itemDisplay;
     itemDisplayWindow->show();
 }
+
+void StoreManager::on_LogOutButton_clicked()
+{
+    this->close();
+}
+

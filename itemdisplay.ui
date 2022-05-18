@@ -32,6 +32,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Bread</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="searchButton">
    <property name="geometry">
@@ -121,6 +127,9 @@
     <font>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(241, 115, 0)</string>
    </property>
    <property name="text">
     <string>Exit</string>

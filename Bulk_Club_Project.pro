@@ -4,7 +4,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
-INCLUDEPATH += "C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v3"
+INCLUDEPATH += "C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6"
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -21,6 +21,7 @@ SOURCES += \
     membershipexpiry.cpp \
     managemembers.cpp \
     memberupgrade.cpp \
+    newpurchase.cpp \
     rebatewindow.cpp \
     salesreport.cpp \
     storemanager.cpp
@@ -35,6 +36,7 @@ HEADERS += \
     membershipexpiry.h \
     managemembers.h \
     memberupgrade.h \
+    newpurchase.h \
     picosha2.h \
     rebatewindow.h \
     salesreport.h \
@@ -49,6 +51,7 @@ FORMS += \
     membershipexpiry.ui \
     managemembers.ui \
     memberupgrade.ui \
+    newpurchase.ui \
     rebatewindow.ui \
     salesreport.ui \
     storemanager.ui

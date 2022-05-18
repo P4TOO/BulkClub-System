@@ -14,31 +14,43 @@ memberupgrade::memberupgrade(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+<<<<<<< HEAD
     db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+=======
+    db.setDatabaseName("C://Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+>>>>>>> 6e94b28488d84adc6e5302c88a8bd2e1c65c6b1b
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery query(db);
-    query.prepare("SELECT Member_Name, Membership_ID, Current_Rebate "
+    query.prepare("SELECT Member_Name, Membership_ID, Current_Rebate, Membership_Type "
                   "FROM Members "
-                  "WHERE Membership_Type='Executive' AND Current_Rebate < 10.00");
+                  "WHERE Membership_Type='Executive' AND Current_Rebate < 60.00");
     query.exec();
 
     model->setQuery(std::move(query));
+
+    int downgradeCount = model->rowCount(invalidIndex);
+    QString downgradeString = "Downgrades: ";
+    downgradeString.append(QString::number(downgradeCount));
+    ui->downgradeLabel->setText(downgradeString);
 
     ui->tableView->setModel(model);
 
     QSqlQueryModel * model2 = new QSqlQueryModel();
     QSqlQuery query2(db);
-    query2.prepare("SELECT Membership_Number, SUM(Quantity_Purchased * Sales_Price)"
-                  "FROM Inventory "
-                  // "WHERE "
-                   "GROUP BY Membership_Number");
+    query2.prepare("SELECT (SELECT Member_Name FROM Members WHERE Members.Membership_ID=Sales_Record.Membership_Number) AS Member_Name,Membership_Number, SUM(Quantity_Purchased * Sales_Price) AS Total_Spendings, (SELECT Membership_Type FROM Members WHERE Members.Membership_ID=Sales_Record.Membership_Number)AS Membership_Type FROM Sales_Record "
+
+                   " GROUP BY Membership_Number HAVING Total_Spendings > 2750.00 AND Membership_Type = 'Regular'");
 
     query2.exec();
 
     model2->setQuery(std::move(query2));
 
+    int upgradeCount = model2->rowCount(invalidIndex);
+    QString upgradeString = "Upgrades: ";
+    upgradeString.append(QString::number(upgradeCount));
+    ui->upgradeLabel->setText(upgradeString);
     ui->tableView_2->setModel(model2);
 }
 

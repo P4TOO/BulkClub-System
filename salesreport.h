@@ -22,6 +22,10 @@ private slots:
 
     void on_DatelineEdit_returnPressed();
 
+    void on_ExitButton_clicked();
+
+    void on_AllTimeButton_clicked();
+
 private:
     Ui::SalesReport *ui;
 

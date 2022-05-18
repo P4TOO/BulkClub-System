@@ -40,7 +40,11 @@ void AddMember::on_addMemberPushButton_clicked()
 else
    {
    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+<<<<<<< HEAD
    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+=======
+   db.setDatabaseName("C://Users/mitch/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+>>>>>>> 6e94b28488d84adc6e5302c88a8bd2e1c65c6b1b
    db.open();                                                                  //the .db file should be kept within the repository for now
 
    QSqlQuery query(db);

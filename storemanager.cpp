@@ -15,6 +15,7 @@ StoreManager::~StoreManager()
 }
 
 
+<<<<<<< HEAD
 void  StoreManager::on_pushButton_clicked()
 {
     QSqlDatabase db=QSqlDatabase::addDatabase("QSQLITE");
@@ -34,6 +35,8 @@ void  StoreManager::on_pushButton_clicked()
 
 }
 
+=======
+>>>>>>> 6e94b28488d84adc6e5302c88a8bd2e1c65c6b1b
 void StoreManager::on_sales_report_clicked()
 {
     SalesReportWindow = new SalesReport;
@@ -65,3 +68,18 @@ void StoreManager::on_item_inventory_clicked()
     itemDisplayWindow = new itemDisplay;
     itemDisplayWindow->show();
 }
+
+void StoreManager::on_new_purchase_clicked()
+{
+    purchaseWindow = new newPurchase;
+    purchaseWindow->show();
+}
+
+
+
+void StoreManager::on_logout_clicked()
+{
+    close();
+
+}
+

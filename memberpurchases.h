@@ -22,6 +22,8 @@ private slots:
 
     void on_cancelButton_clicked();
 
+    void on_DisplayAllPushButton_clicked();
+
 private:
     Ui::memberPurchases *ui;
 };

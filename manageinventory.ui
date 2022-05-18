@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Manage Inventory</string>
   </property>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
@@ -36,7 +36,7 @@
     <string>Row # to Delete</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>12</x>

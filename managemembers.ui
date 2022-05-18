@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Manage Members</string>
   </property>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
@@ -29,7 +29,7 @@
      <x>360</x>
      <y>570</y>
      <width>274</width>
-     <height>50</height>
+     <height>62</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -69,13 +69,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>570</y>
      <width>271</width>
-     <height>51</height>
+     <height>62</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -115,13 +115,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>170</x>
      <y>670</y>
      <width>311</width>
-     <height>31</height>
+     <height>32</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_3">

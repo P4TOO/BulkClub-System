@@ -15,20 +15,21 @@ memberPurchases::memberPurchases(QWidget *parent) :
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QSqlQueryModel * model0 = new QSqlQueryModel();
    //model is readonly access to query results
     QSqlQuery query(db);
-    query.prepare("SELECT Membership_number, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Inventory GROUP BY Membership_number ORDER BY Membership_number");
+    query.prepare("SELECT Membership_Number, (SELECT Member_Name from Members WHERE Members.Membership_ID=Sales_Record.Membership_Number) as Member_Name, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Sales_Record GROUP BY Membership_number ORDER BY Membership_number");
 
     query.exec(); //query must be active before being moved into the model
 
     model0->setQuery(std::move(query));
 
     ui->tableView->setModel(model0);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     QSqlRecord totalMemberSalesRecord;
     int totalSalesIterator1 = 0;
@@ -56,13 +57,13 @@ memberPurchases::~memberPurchases()
 void memberPurchases::on_idSearchButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString ID = ui->memberIDLineEdit->text();
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery query(db);
-    query.prepare("SELECT * FROM Inventory WHERE Membership_Number=(:ID)");
+    query.prepare("SELECT * FROM Sales_Record WHERE Membership_Number=(:ID)");
     query.bindValue(":ID",ID);
     query.exec();
 
@@ -91,14 +92,14 @@ void memberPurchases::on_idSearchButton_clicked()
 void memberPurchases::on_nameSearchButton_clicked()
 {
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
 
     QString name = ui->memberNameLineEdit->text();
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery query(db);
     QSqlRecord record;
-    query.prepare("SELECT * FROM Members WHERE Member_Name=(:name)");//This query is for getting the memberID that corresponds to the entered name
+    query.prepare("SELECT * FROM Sales_Record WHERE Member_Name=(:name)");//This query is for getting the memberID that corresponds to the entered name
     query.bindValue(":name",name);
     query.exec();
 
@@ -106,7 +107,7 @@ void memberPurchases::on_nameSearchButton_clicked()
     record = model->record(0);
     QString id = record.value(1).toString();
     QSqlQuery query2(db);
-    query2.prepare("SELECT * FROM Inventory WHERE Membership_Number=(:ID)");//uses the fetched ID to check for purchases associated with it
+    query2.prepare("SELECT * FROM Sales_Record WHERE Membership_Number=(:ID)");//uses the fetched ID to check for purchases associated with it
     query2.bindValue(":ID",id);
     query2.exec();
     qDebug() << id;
@@ -137,5 +138,43 @@ void memberPurchases::on_nameSearchButton_clicked()
 void memberPurchases::on_cancelButton_clicked()
 {
     close();
+}
+
+
+void memberPurchases::on_DisplayAllPushButton_clicked()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+
+    db.open();                                                                  //the .db file should be kept within the repository for now
+
+    QSqlQueryModel * model0 = new QSqlQueryModel();
+   //model is readonly access to query results
+    QSqlQuery query(db);
+    query.prepare("SELECT Membership_Number, (SELECT Member_Name from Members WHERE Members.Membership_ID=Sales_Record.Membership_Number) as Member_Name, SUM (sales_price* quantity_purchased * 1.0775) as Total_Purchases FROM Sales_Record GROUP BY Membership_number ORDER BY Membership_number");
+
+    query.exec(); //query must be active before being moved into the model
+
+    model0->setQuery(std::move(query));
+
+    ui->tableView->setModel(model0);
+
+    QSqlRecord totalMemberSalesRecord;
+    int totalSalesIterator1 = 0;
+    double salesPrice1 = 0;
+    //int salesQuantity1 = 0;
+    double runningTotal1 = 0;
+
+    do{
+            totalMemberSalesRecord = model0->record(totalSalesIterator1); //sets record to the row of the iterator in the model
+            salesPrice1 = totalMemberSalesRecord.value(1).toDouble(); //value at index 3 in the row should be Sales_Price
+            runningTotal1 += salesPrice1;
+            totalSalesIterator1++;
+        }while (!totalMemberSalesRecord.isNull(1));
+
+    QString finalTotal = finalTotal.number(runningTotal1,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
+    finalTotal.prepend("Total Purchases + tax: ");
+    ui->totalLabel->setText(finalTotal);
 }
 

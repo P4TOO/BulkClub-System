@@ -16,7 +16,7 @@ SalesReport::SalesReport(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
     db.open();                                                                  //the .db file should be kept within the repository for now
 
@@ -45,7 +45,7 @@ SalesReport::SalesReport(QWidget *parent) :
     QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
 
     ui->tableView->setModel(model);
-
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->totalSalesNum->setText(finalTotal);
 
 
@@ -63,7 +63,7 @@ void SalesReport::on_MemberTypePushButton_clicked()
 
         QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-        db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+        db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
         db.open();                                                                  //the .db file should be kept within the repository for now
 
@@ -102,7 +102,7 @@ void SalesReport::on_MemberTypePushButton_clicked()
 
         QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-        db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+        db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
         db.open();                                                                  //the .db file should be kept within the repository for now
 
@@ -130,7 +130,7 @@ void SalesReport::on_MemberTypePushButton_clicked()
         QString finalTotal = finalTotal.number(runningTotal,'f',2);//sets a formatted total to a string that can be passed to the totalSalesNum label
 
         ui->tableView->setModel(model);
-
+        ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
         ui->totalSalesNum->setText(finalTotal);
 
     }
@@ -145,7 +145,7 @@ void SalesReport::on_DatePushButton_clicked()
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
 
-    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C://Users/luisr/OneDrive/Desktop/QT stuff/BulkClub-System_v6/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
 
     db.open();                                                                  //the .db file should be kept within the repository for now
 
@@ -183,5 +183,11 @@ void SalesReport::on_DatePushButton_clicked()
 void SalesReport::on_DatelineEdit_returnPressed()
 {
     SalesReport::on_DatePushButton_clicked();
+}
+
+
+void SalesReport::on_ExitButton_clicked()
+{
+    this->close();
 }
 

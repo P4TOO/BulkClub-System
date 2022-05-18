@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>583</width>
-    <height>538</height>
+    <width>765</width>
+    <height>584</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Member Purchases</string>
   </property>
   <widget class="QTableView" name="tableView">
    <property name="geometry">
     <rect>
      <x>12</x>
      <y>13</y>
-     <width>561</width>
+     <width>741</width>
      <height>381</height>
     </rect>
    </property>
@@ -28,8 +28,8 @@
     <rect>
      <x>100</x>
      <y>410</y>
-     <width>381</width>
-     <height>111</height>
+     <width>271</width>
+     <height>140</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -132,11 +132,24 @@
        <string notr="true">background-color: rgb(241, 115, 0)</string>
       </property>
       <property name="text">
-       <string>Cancel</string>
+       <string>Exit</string>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="DisplayAllPushButton">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>420</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Display All</string>
+   </property>
   </widget>
  </widget>
  <resources/>

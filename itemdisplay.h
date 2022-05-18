@@ -20,6 +20,9 @@ private slots:
 
     void on_searchButton_clicked();
 
+
+    void on_pushButton_clicked();
+
 private:
     Ui::itemDisplay *ui;
 };

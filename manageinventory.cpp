@@ -9,7 +9,7 @@ ManageInventory::ManageInventory(QWidget *parent) :
     ui->setupUi(this);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/zacal/CS1C/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
+    db.setDatabaseName("C:/Users/gpala_zdi8b1w/BulkClub-System/BulkClubProject.db");//This line and the previous connect to the sqlite database at this file location,
     db.open();                                                                  //the .db file should be kept within the repository for now
     model = new QSqlTableModel(NULL,db);
     model->setTable("Inventory");
